@@ -1,6 +1,8 @@
 <template>
     <div>
-        <h1>Home</h1>
+        <div>
+            <img src="/public/image/netzero/header/banner.jpg" alt="logo" />
+        </div>
     </div>
 </template>
 <script>
