@@ -1,12 +1,13 @@
 <template>
     <div>
-        <Body1 />
-        <Body2 />
+        
     </div>
 </template>
-<script>
+
+<script setup>
 
 </script>
-<style>
-    
+
+<style scoped>
+
 </style>
