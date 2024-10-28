@@ -1,6 +1,6 @@
 <template>
     <div>
-        <header class="bg-[#222] hover:bg-white transition-colors duration-1000 ease-in-out sticky z-30 top-0 left-0 right-0 shadow w-full"
+        <header class="bg-[#222] hover:bg-white transition-colors duration-1000 ease-in-out sticky z-50 top-0 left-0 right-0 shadow w-full"
         :class="{'bg-white': isScrolled}">
             <div class="container mx-auto px-2 sm:px-4 lg:px-6 xl:px-8 flex items-center justify-between h-8 sm:h-12 lg:h-16 xl:h-20 relative navbar">
                 <div class="navbar-start h-8 sm:h-12 lg:h-16 xl:h-20">
