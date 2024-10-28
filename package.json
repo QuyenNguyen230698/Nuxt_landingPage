@@ -10,7 +10,9 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "flowbite": "^2.5.2",
     "nuxt": "^3.13.2",
+    "nuxt-swiper": "^1.2.2",
     "vue": "latest",
     "vue-router": "latest"
   },
