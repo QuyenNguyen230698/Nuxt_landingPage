@@ -1,153 +1,33 @@
 <template>
-  <div>
-    <div class="flex flex-col">
-    <img src="/public/image/netzero/header/banner-02.jpg" alt="" />
-    <div class="relative">
-      <img src="/public/image/netzero/background/bg-main.jpg" alt="body 1" />
-      <div class="flex justify-center h-4 sm:h-8 lg:h-12 xl:h-14 my-2 sm:my-4 lg:my-6 xl:my-8 absolute top-0 left-0 right-0 z-10"
-      >
-        <img
-          class="pr-2 sm:pr-3 md:pr-5 lg:pr-6 xl:pr-8 2xl:pr-10 border-r border-black"
-          src="/public/image/netzero/header/next-1.png"
-          alt="body 1"
-        />
-        <img
-          class="pl-2 sm:pl-3 md:pl-5 lg:pl-6 xl:pl-8 2xl:pl-10 border-l border-black"
-          src="/public/image/netzero/header/next-2.png"
-          alt="body 2"
-        />
-      </div>
-      <div class="container grid grid-cols-2 gap-2 absolute left-0 right-0 z-10 top-[40px] sm:top-[50px] md:top-[70px] lg:top-[120px] w-2/3 mx-auto"
-      >
-        <div>
-          <img src="/public//image//netzero/section/vi-VN/1.webp" alt="" />
-        </div>
-        <div>
-          <img src="/public//image//netzero/section/vi-VN/2fix.webp" alt="" />
-        </div>
-        <div>
-          <img src="/public//image//netzero/section/vi-VN/3.webp" alt="" />
-        </div>
-        <div>
-          <img src="/public//image//netzero/section/vi-VN/4.webp" alt="" />
-        </div>
-      </div>
-      <div class="absolute left-0 right-0 z-10 bottom-[55px] sm:bottom-[60px] md:bottom-[100px] lg:bottom-[120px] xl:bottom-[200px] 2xl:bottom-[350px] mx-auto"
-      >
-        <div class="relative w-full h-full">
-          <img
-            class="w-2/6 h-5 sm:h-6 mb:h-7 lg:h-8 xl:h-9 2xl:h-10 absolute left-0 items-center"
-            src="/public/image/netzero/background/bg-title.png"
-            alt=""
-            style="top: 42%"
+  <div class="relative w-full z-20 overflow-hidden flex flex-col">
+    <img src="/public/image/netzero/header/banner.jpg" alt="" />
+    <div class="bg-main w-full h-full relative flex flex-col">
+      <div class="w-full h-full">
+        <!-- header & section -->
+        <div class="flex flex-col w-full container mx-auto">
+          <div class="flex items-center justify-center py-6">
+            <img
+            class="w-auto h-8 sm:h-10 lg:h-16 object-fit"
+            src="/public/image/netzero/header/next-1.png"
+            alt="body 1"
           />
-          <div class="flex h-full container mx-auto w-4/5">
-            <div class="w-2/6 flex items-center">
-              <p
-                class="text-xs sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-black"
-              >
-                EVENTS<br />FEATURED
-              </p>
-            </div>
-            <div class="w-4/6 flex justify-end gap-4">
-              <div class="grid grid-cols-4 gap-1">
-                <img
-                  src="/public/image/netzero/workshop/vi-VN/workshop-1.webp"
-                  alt=""
-                />
-                <img
-                  src="/public/image/netzero/workshop/vi-VN/workshop-2.webp"
-                  alt=""
-                />
-                <img
-                  src="/public/image/netzero/workshop/vi-VN/workshop-3.webp"
-                  alt=""
-                />
-                <img
-                  src="/public/image/netzero/workshop/vi-VN/workshop-4.webp"
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="absolute left-0 right-0 z-10 bottom-[-30px] sm:bottom-[-40px] md:bottom-[-80px] lg:bottom-[-70px] xl:bottom-[-40px] 2xl:bottom-[0px]">
-        <div class="relative w-full h-full">
+          <div class="h-6 sm:h-8 bg-black mx-2 lg:mx-8" style="width: 1px;"></div>
           <img
-            class="w-2/6 h-5 sm:h-6 mb:h-7 lg:h-8 xl:h-9 2xl:h-10 absolute right-0 items-center"
-            src="/public/image/netzero/background/bg-title.png"
-            alt=""
-            style="top: 42%"
+            class="w-auto h-8 sm:h-10 lg:h-16 object-fit"
+            src="/public/image/netzero/header/next-2.png"
+            alt="body 2"
           />
-          <div class="flex h-full container mx-auto w-4/5">
-            <div class="w-4/6 flex justify-start gap-4">
-              <div class="grid grid-cols-4 gap-1">
-                <img
-                  src="/public/image/netzero/speaker/speaker.jpg"
-                  alt=""
-                />
-                <img
-                  src="/public/image/netzero/speaker/speaker.jpg"
-                  alt=""
-                />
-                <img
-                  src="/public/image/netzero/speaker/speaker.jpg"
-                  alt=""
-                />
-                <img
-                  src="/public/image/netzero/speaker/speaker.jpg"
-                  alt=""
-                />
-              </div>
-            </div>
-            <div class="w-2/6 flex justify-end text-right items-center">
-              <p
-                class="text-xs sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-black"
-              >
-              GUEST<br />SPEAKER
-              </p>
-            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 items-center justify-center w-full h-full px-2 md:px-16 lg:px-24">
+            <img v-for="item in section" :src="item.image" :key="item.image" class="w-full h-auto object-fit">
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="mx-auto mt-10 md:mt-24 lg:mt-20 xl:mt-14 2xl:mt-8">
-      <div class="relative w-full h-full flex">
-        <img
-          class="w-2/6 h-5 sm:h-6 mb:h-7 lg:h-8 xl:h-9 2xl:h-10 absolute left-0 items-center"
-          src="/public/image/netzero/background/bg-title.png"
-          alt=""
-          style="top: 42%"
-        />
-        <div class="flex h-full container mx-auto w-4/5">
-          <div class="w-2/6 flex items-center">
-            <p
-              class="text-xs sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-black"
-            >
-              TIMELINE
-            </p>
+        <!-- workshop & speaker -->
+        <div class="relative w-full py-6">
+          <div class="absolute inset-0 h-6 lg:h-8 w-2/3 lg:w-1/3 position-left-right">
+            <img v-for="item in background" :src="item.image" :key="item.image">
           </div>
-          <div
-            class="container grid grid-cols-2 gap-2 absolute left-0 right-0 z-10 top-[40px] sm:top-[50px] md:top-[60px] lg:top-[70px] xl:top-[85px] 2xl:top-[100px] w-2/3 mx-auto"
-          >
-            <div>
-              <img src="/public//image/netzero/timeline/vi-VN/timeline-one.webp" alt="" />
-            </div>
-            <div>
-              <img
-              src="/public//image/netzero/timeline/vi-VN/timeline-3.webp" 
-                alt=""
-              />
-            </div>
-            <div>
-              <img src="/public//image/netzero/timeline/vi-VN/timeline-2.webp"  alt="" />
-            </div>
-            <div>
-              <img src="/public//image/netzero/timeline/vi-VN/timeline-4.webp"  alt="" />
-            </div>
-          </div>
+          <div class="container"></div>
         </div>
       </div>
     </div>
@@ -155,6 +35,24 @@
 </template>
 
 <script setup>
+const section = [
+  {image:'/image/netzero/section/vi-VN/1.webp'},
+  {image:'/image/netzero/section/vi-VN/2fix.webp'},
+  {image:'/image/netzero/section/vi-VN/3.webp'},
+  {image:'/image/netzero/section/vi-VN/4.webp'},
+];
+const background = [
+  {image:'/image/netzero/background/bg-title.png'}
+]
 
 </script>
-<style scoped></style>
+<style scoped>
+.bg-main{
+  background-image: url('/public/image/netzero/background/bg-main.jpg');
+  background-size: cover;
+  background-position: center;
+};
+.position-left-right {
+  top: 45%;
+}
+</style>
