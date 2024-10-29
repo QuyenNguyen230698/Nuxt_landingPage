@@ -74,13 +74,13 @@
     <!-- Register -->
      <div class="relative w-full h-full flex flex-col py-6">
       <div class="container mx-auto flex gap-6">
-        <button class="text-xs sm:text-sm md:text-base nav-item py-2 cursor-pointer">REGISTER PARTICIPATE</button>
-        <button class="text-xs sm:text-sm md:text-base nav-item py-2 cursor-pointer">REGISTER BOOTH</button>
+        <button @click="showForm = 'participate'" :class="{'active': showForm === 'participate'}" class="text-xs sm:text-sm md:text-base nav-item py-2 cursor-pointer">REGISTER PARTICIPATE</button>
+        <button @click="showForm = 'booth'" :class="{'active': showForm === 'booth'}" class="text-xs sm:text-sm md:text-base nav-item py-2 cursor-pointer">REGISTER BOOTH</button>
       </div>
      </div>
      <div class="flex flex-col w-full h-full bg-black">
       <!-- form 1 -->
-      <section class="container mx-auto flex flex-col overflow-hidden items-center bg-black">
+      <section v-if="showForm === 'participate'" class="container mx-auto flex flex-col overflow-hidden items-center bg-black">
         <div class="relative hero-module">
           <div class="relative grid-module">
             <div class="wrapper-container">
@@ -172,7 +172,7 @@
         </div>
       </section>
       <!-- form 2 -->
-      <section class="container mx-auto flex flex-col overflow-hidden items-center bg-black">
+      <section v-if="showForm === 'booth'" class="container mx-auto flex flex-col overflow-hidden items-center bg-black">
         <div class="relative hero-module">
           <div class="relative grid-module">
             <div class="wrapper-container">
@@ -249,6 +249,9 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
+const showForm = ref('participate')
+
 const section = [
   {image:'/image/netzero/section/vi-VN/1.webp'},
   {image:'/image/netzero/section/vi-VN/2fix.webp'},
@@ -300,21 +303,28 @@ const register = [
   height: 2.5rem;
   min-height: 2.5rem;
 }
-.nav-item:after {
-    bottom: 0;
-    content: "";
-    height: .125rem;
-    left: 0;
-    position: absolute;
-    width: 0;
-    --tw-bg-opacity: 1;
-    background-color: rgb(34 34 34 / var(--tw-bg-opacity));
-    transition-duration: .5s;
-    transition-property: all;
-    transition-timing-function: cubic-bezier(.4,0,.2,1);
-};
-.nav-item:hover:after,
-.nav-item:active:after {
+.nav-item {
+  position: relative;
+}
+.nav-item.active {
+  color: #000000;
+}
+.nav-item.active:after,
+.nav-item:hover:after {
   width: 100%;
-};
+}
+.nav-item:after {
+  bottom: 0;
+  content: "";
+  height: .125rem;
+  left: 0;
+  position: absolute;
+  width: 0;
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 34 34 / var(--tw-bg-opacity));
+  transition-duration: .5s;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+}
+
 </style>
