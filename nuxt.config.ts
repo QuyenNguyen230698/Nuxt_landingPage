@@ -4,6 +4,8 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   modules: [
     '@nuxtjs/tailwindcss',
-    'nuxt-swiper'
+    'nuxt-swiper',
+    '@nuxtjs/i18n',
+    '@nuxt/image'
   ]
 })

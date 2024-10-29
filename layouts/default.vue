@@ -18,7 +18,7 @@
                         </div>
                         <div class="relative">
                             <details class="text-nowrap">
-                                <summary class="flex items-center gap-2 cursor-pointer hover:bg-gray-700 px-2 rounded">
+                                <summary class="flex items-center gap-2 cursor-pointer px-2 rounded">
                                     <img class="w-10 h-10" src="/public/image/netzero/header/language-en.png" alt="language" />
                                 </summary>
                                 <!-- Chỉ giữ lại một menu dropdown và thêm các tùy chọn ngôn ngữ vào -->
@@ -55,7 +55,7 @@
                         </div>
                         <div class="relative">
                             <details class="text-nowrap">
-                                <summary class="flex items-center gap-2 cursor-pointer hover:bg-gray-700 px-2 rounded">
+                                <summary class="flex items-center gap-2 cursor-pointer px-2 rounded">
                                     <img class="w-10 h-10" src="/public/image/netzero/header/language-en.png" alt="language" />
                                 </summary>
                                 <!-- Chỉ giữ lại một menu dropdown và thêm các tùy chọn ngôn ngữ vào -->
