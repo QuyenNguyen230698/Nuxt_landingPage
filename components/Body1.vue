@@ -1,6 +1,6 @@
 <template>
   <div class="relative w-full z-20 overflow-hidden flex flex-col">
-    <img src="/public/image/netzero/header/banner.jpg" alt="" />
+    <img data-aos="fade-up" data-aos-duration='1000' src="/public/image/netzero/header/banner.jpg" alt="" />
     <div class="bg-main w-full h-full relative flex flex-col">
       <div class="w-full h-full">
         <!-- header & section -->
@@ -45,9 +45,10 @@
           </div>
           <div class="container mx-auto p-0 grid grid-cols-1 lg:grid-cols-3 w-full h-full gap-3 px-3 md:px-6 lg:px-0">
             <div class="order-2 lg:order-1 lg:col-span-2 w-full overflow-x-hidden overflow-y-hidden">
-              <div class="w-full grid grid-cols-2 lg:grid-cols-4 gap-1 py-3">
+              <!-- <div class="w-full grid grid-cols-2 lg:grid-cols-4 gap-1 py-3">
                 <img v-for="item in speaker" :src="item.image" :key="item.image" class="w-full h-full object-cover">
-              </div>
+              </div> -->
+              <ImageGallary :imageUrls="speaker" :useActive="true" :duration="500"/>
             </div>
             <div class="order-1 lg:order-2 lg:col-span-1 flex flex-col items-start lg:items-end justify-center">
               <div class="flex lg:flex-col items-end justify-center gap-1 font-bold">
@@ -292,7 +293,7 @@
             <h2 class="title-body">MEDIA</h2>
           </div>
           <div class="flex w-full flex-col container mx-auto px-12">
-            <h2 class="text-center text-black text-xl md:text-2xl lg:text-3xl font-bold">This is a Slice</h2>
+            <ImageGallary :imageUrls="media" :useActive="false" :duration="500" useGap="gap-6"/>
           </div>
         </div>
         <!-- Bus -->
@@ -321,6 +322,7 @@
 
 <script setup>
 import { ref } from 'vue';
+const { locale } = useI18n()
 const showForm = ref('participate')
 
 const section = [
@@ -339,17 +341,21 @@ const workshop = [
   {image:'/image/netzero/workshop/vi-VN/workshop-4.webp'},
 ];
 const speaker = [
-  {image:'/image/netzero/speaker/vi-VN/speaker-1.webp'},
-  {image:'/image/netzero/speaker/vi-VN/speaker-1.webp'},
-  {image:'/image/netzero/speaker/vi-VN/speaker-1.webp'},
-  {image:'/image/netzero/speaker/vi-VN/speaker-1.webp'},
+  {src:'/image/netzero/speaker/vi-VN/speaker-1.webp'},
+  {src:'/image/netzero/speaker/vi-VN/speaker-1.webp'},
+  {src:'/image/netzero/speaker/vi-VN/speaker-1.webp'},
+  {src:'/image/netzero/speaker/vi-VN/speaker-1.webp'},
+  {src:'/image/netzero/speaker/vi-VN/speaker-1.webp'},
+  {src:'/image/netzero/speaker/vi-VN/speaker-1.webp'},
+  {src:'/image/netzero/speaker/vi-VN/speaker-1.webp'},
+  {src:'/image/netzero/speaker/vi-VN/speaker-1.webp'}
 ];
-const timeLine = [
-  {image:'/image/netzero/timeline/vi-VN/timeline-one.webp'},
-  {image:'/image/netzero/timeline/vi-VN/timeline-3.webp'},
-  {image:'/image/netzero/timeline/vi-VN/timeline-2.webp'},
-  {image:'/image/netzero/timeline/vi-VN/timeline-4.webp'},
-];
+const timeLine = computed(() => [
+  {image:`/image/netzero/timeline/${locale.value}/timeline-one.webp`},
+  {image:`/image/netzero/timeline/${locale.value}/timeline-3.webp`},
+  {image:`/image/netzero/timeline/${locale.value}/timeline-2.webp`},
+  {image:`/image/netzero/timeline/${locale.value}/timeline-4.webp`},
+]);
 const sponsorship = [
   {image:'/image/netzero/logo/elle.png'},
   {image:'/image/netzero/logo/kienviet.png'},
@@ -358,7 +364,28 @@ const sponsorship = [
 const bus = [
   {image:'/image/netzero/bus/vi-VN/bus-1.webp'},
   {image:'/image/netzero/bus/vi-VN/bus-2.webp'}
+];
+const media = [
+  {src:'/image/netzero/communication/1.png'},
+  {src:'/image/netzero/communication/2.png'},
+  {src:'/image/netzero/communication/3.png'},
+  {src:'/image/netzero/communication/4.png'},
+  {src:'/image/netzero/communication/5.png'},
+  {src:'/image/netzero/communication/6.png'},
+  {src:'/image/netzero/communication/7.png'},
+  {src:'/image/netzero/communication/8.png'},
+  {src:'/image/netzero/communication/9.png'},
+  {src:'/image/netzero/communication/10.png'},
+  {src:'/image/netzero/communication/11.png'},
+  {src:'/image/netzero/communication/12.png'},
+  {src:'/image/netzero/communication/13.png'},
+  {src:'/image/netzero/communication/14.png'},
+  {src:'/image/netzero/communication/15.png'},
+  {src:'/image/netzero/communication/16.png'},
+  {src:'/image/netzero/communication/17.png'},
+  {src:'/image/netzero/communication/18.png'}
 ]
+
 
 </script>
 <style scoped>
@@ -368,7 +395,7 @@ const bus = [
   background-position: center;
 };
 .title-body {
-  color: #000000;
+  color: black;
   text-transform: uppercase;
   --tw-text-opacity: 1;
   font-weight: bold;

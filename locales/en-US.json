@@ -1,0 +1,81 @@
+{
+  "app":{
+    "form":{
+      "signEvent":"REGISTER PARTICIPATE",
+      "signBooth":"REGISTER BOOTH"
+    },
+    "bus":{
+      "schedule":"Bus Schedule"
+    },
+    "event":{
+      "hot2":"FEATURED",
+      "hot1":"EVENTS",
+      "venue":"event Venue"
+    },
+    "speaker":{
+      "speaker1":"GUEST",
+      "speaker2":"SPEAKER"
+    },
+    "partner": {
+      "partner": "Partner"
+    },
+    "time": {
+      "timeline": "Timeline"
+    },
+    "media":{
+      "ponsorship":"Media Sponsorship",
+      "communication":"Media"
+    },
+    "news":{
+      "new":"NEWS"
+    }
+  },
+  "notificationQR":"The QR code is being generated. Please wait a moment!",
+  "form": {
+    "title": "EVENT REGISTRATION",
+    "fullName": "Full name",
+    "placeHolderName": "Your full name",
+    "phone": "Phone number",
+    "placeHolderPhone": "Your phone number",
+    "email": "Email",
+    "placeHolderEmail": "Your email",
+    "gender": "Gender",
+    "isStudent": "Are you a student?",
+    "companyName": "Company name",
+    "position": "Position",
+    "universityName": "University name",
+    "major": "Major",
+    "textPolicy": "We are committed to using customer information safely, legally, and in compliance with current laws and regulations.",
+    "textButton": "Register",
+    "joinDate": "Participation date"
+  },
+  "footer": {
+    "aboutUs": "About Us",
+    "news": "News",
+    "contact": "Contact",
+    "sustainability": "Sustainability",
+    "environment": "Environment",
+    "social": "Social",
+    "governance": "Governance",
+    "netZero2030": "NetZero 2030",
+    "solutions": "Solutions",
+    "hospitalityFurniture": "Hospitality Furniture",
+    "architectureAndConstruction": "Architecture & Construction",
+    "modularHomes": "Modular Homes",
+    "hospitalityManagement": "Hospitality Management",
+    "projects": "Projects",
+    "category": "Category",
+    "threeDTour": "3D Tour",
+    "career": "Career",
+    "contest": "Contest",
+    "brochure": "Brochure"
+  },
+  "toast": {
+    "notification":"Please check your email (inbox or spam) after 1 - 5 minutes.",
+    "help":"Support: (+84) 931 866 698 (Mr. Duc).",
+    "errorName": "Please enter your name.",
+    "errorEmail": "Please enter your email.",
+    "errorPhone": "Please enter your phone number.",
+    "errorEmailInvalid": "Please enter a valid email address."
+  }
+}

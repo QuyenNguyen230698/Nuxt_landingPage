@@ -1,0 +1,81 @@
+{
+  "app": {
+    "form": {
+      "signEvent": "ĐĂNG KÝ THAM GIA",
+      "signBooth": "ĐĂNG KÝ GIAN HÀNG"
+    },
+    "bus": {
+      "schedule": "LỊCH XE BUÝT"
+    },
+    "event": {
+      "hot1": "Sự kiện",
+      "hot2": "nổi bật",
+      "venue":"Mặt bằng sự kiện"
+    },
+    "speaker": {
+      "speaker1": "Diễn Giả",
+      "speaker2": "Khách mời"
+    },
+    "partner": {
+      "partner": "Đối tác"
+    },
+    "time": {
+      "timeline": "Timeline"
+    },
+    "media":{
+      "ponsorship":"Bảo trợ truyền thông",
+      "communication":"Media"
+    },
+    "news":{
+      "new":"Tin Tức"
+    }
+  },
+  "notificationQR": "Mã QR đang được tạo. Xin vui lòng đợi trong giây lát!",
+  "form": {
+    "title": "ĐĂNG KÝ THAM GIA SỰ KIỆN",
+    "fullName": "Họ và tên",
+    "placeHolderName": "Họ và tên của bạn",
+    "phone": "Số điện thoại",
+    "placeHolderPhone": "Số điện thoại của bạn",
+    "email": "Email",
+    "placeHolderEmail": "Email của bạn",
+    "gender": "Giới tính",
+    "isStudent": "Bạn có phải là sinh viên các trường cao đẳng, đại học? ",
+    "companyName": "Tên công ty",
+    "position": "Chức vụ",
+    "universityName": "Tên trường đại học",
+    "major": "Chuyên ngành",
+    "textPolicy": "Chúng tôi cam kết sẽ sử dụng thông tin của khách hàng một cách an toàn, hợp pháp và tuân thủ các quy định pháp luật hiện hành.",
+    "textButton": "Đăng ký",
+    "joinDate": "Ngày tham gia"
+  },
+  "footer": {
+    "aboutUs": "Giới thiệu",
+    "news": "Tin tức",
+    "contact": "Liên hệ",
+    "sustainability": "Sự bền vững",
+    "environment": "Môi trường",
+    "social": "Trách nhiệm xã hội",
+    "governance": "Quản trị",
+    "netZero2030": "NetZero 2030",
+    "solutions": "Giải pháp",
+    "hospitalityFurniture": "Nội thất khách sạn",
+    "architectureAndConstruction": "Kiến trúc & Xây dựng",
+    "modularHomes": "Nhà mô-đun",
+    "hospitalityManagement": "Quản lý khách sạn",
+    "projects": "Dự án",
+    "category": "Danh mục",
+    "threeDTour": "3D Tour",
+    "career": "Tuyển Dụng",
+    "contest": "Cuộc thi",
+    "brochure": "Brochure"
+  },
+  "toast": {
+    "notification": "Vui lòng kiểm tra email (tại hộp thư đến hoặc thư rác) sau 1 - 5 phút.",
+    "help": "Hỗ trợ:(+84) 931 866 698 (Mr. Đức)",
+    "errorName": "Vui lòng điền Họ và Tên.",
+    "errorEmail": "Vui lòng điền email.",
+    "errorPhone": "Vui lòng điền số điện thoại.",
+    "errorEmailInvalid": "Vui lòng điền email hợp lệ."
+  }
+}

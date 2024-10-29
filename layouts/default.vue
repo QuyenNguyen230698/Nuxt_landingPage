@@ -1,6 +1,7 @@
 <template>
+    <ClientOnly>
     <div>
-        <header class="bg-[#222] hover:bg-white transition-colors duration-1000 ease-in-out sticky z-50 top-0 left-0 right-0 shadow w-full"
+        <header class="bg-black hover:bg-white transition-colors duration-1000 ease-in-out sticky z-50 top-0 left-0 right-0 shadow w-full"
         :class="{'bg-white': isScrolled}">
             <div class="container mx-auto px-2 sm:px-4 lg:px-6 xl:px-8  flex items-center justify-between h-8 sm:h-12 lg:h-16 xl:h-20 relative navbar">
                 <div class="navbar-start h-8 sm:h-12 lg:h-16 xl:h-20">
@@ -12,27 +13,12 @@
                     <div class="flex">
                         <div class="flex flex-col w-full h-full gap-6">
                             <div class="container mx-auto flex gap-6 text-white">
-                            <button class="text-xs sm:text-sm md:text-base py-2 cursor-pointer">REGISTER PARTICIPATE</button>
-                            <button class="text-xs sm:text-sm md:text-base py-2 cursor-pointer">REGISTER BOOTH</button>
+                            <button class="text-xs sm:text-sm md:text-base py-2 cursor-pointer">{{ $t('app.form.signEvent') }}</button>
+                            <button class="text-xs sm:text-sm md:text-base py-2 cursor-pointer">{{ $t('app.form.signBooth') }}</button>
                             </div>
                         </div>
                         <div class="relative">
-                            <details class="text-nowrap">
-                                <summary class="flex items-center gap-2 cursor-pointer px-2 rounded">
-                                    <img class="w-10 h-10" src="/public/image/netzero/header/language-en.png" alt="language" />
-                                </summary>
-                                <!-- Chỉ giữ lại một menu dropdown và thêm các tùy chọn ngôn ngữ vào -->
-                                <div class="absolute right-0 mt-2 bg-white rounded-md shadow-lg overflow-hidden min-w-[160px]">
-                                    <div class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer">
-                                        <img class="w-8 h-8" src="/public/image/netzero/header/language-en.png" alt="language" />
-                                        <span>English</span>
-                                    </div>
-                                    <div class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer">
-                                        <img class="w-8 h-8" src="/public/image/netzero/header/language-vi.png" alt="language" />
-                                        <span>Vietnamese</span>
-                                    </div>
-                                </div>
-                            </details>
+                            <LanguageSwitch/>
                         </div>
                     </div>
                 </div>
@@ -54,22 +40,7 @@
                             </div>
                         </div>
                         <div class="relative">
-                            <details class="text-nowrap">
-                                <summary class="flex items-center gap-2 cursor-pointer px-2 rounded">
-                                    <img class="w-10 h-10" src="/public/image/netzero/header/language-en.png" alt="language" />
-                                </summary>
-                                <!-- Chỉ giữ lại một menu dropdown và thêm các tùy chọn ngôn ngữ vào -->
-                                <div class="absolute right-0 mt-2 bg-white rounded-md shadow-lg overflow-hidden min-w-[160px]">
-                                    <div class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer">
-                                        <img class="w-8 h-8" src="/public/image/netzero/header/language-en.png" alt="language" />
-                                        <span>English</span>
-                                    </div>
-                                    <div class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer">
-                                        <img class="w-8 h-8" src="/public/image/netzero/header/language-vi.png" alt="language" />
-                                        <span>Vietnamese</span>
-                                    </div>
-                                </div>
-                            </details>
+                            <LanguageSwitch/>
                         </div>
                     </div>
                 </div>
@@ -189,27 +160,57 @@
                 </div>
             </footer>
         </footer>
-        <button style="z-index:999 !important;" class="fixed bottom-8 right-3 lg:right-8 bg-gray-800 text-white p-2 rounded-full shadow-lg hover:bg-gray-700 transition-colors duration-300 z-40 opacity-100"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg></button>
+        <ButtonScrollToTop />
     </div>
+</ClientOnly>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      isScrolled: false
+<script setup>
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
+const isScrolled = ref(false)
+const targetElement = ref(null) // Reference to the target element
+
+onMounted(() => {
+    window.addEventListener('scroll', checkScrollHover);
+    AOS.init({
+      offset: 200,
+      duration: 600,
+      easing: 'ease-in-sine',
+      delay: 100,
+      once: false
+    });
+    window.addEventListener('scroll', refreshAOS);
+})
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', checkScrollHover);
+    window.removeEventListener('scroll', refreshAOS);
+})
+
+const checkScrollHover = () => {
+    if (window.scrollY > 50) {
+        isScrolled.value = true;
+    } else {
+        isScrolled.value = false;
     }
-  },
-  mounted() {
-    window.addEventListener('scroll', this.handleScroll)
-  },
-  beforeDestroy() {
-    window.removeEventListener('scroll', this.handleScroll)
-  },
-  methods: {
-    handleScroll() {
-      this.isScrolled = window.scrollY > 50 // Kích hoạt khi scroll xuống 50px
+}
+
+const refreshAOS = () => {
+    if (targetElement.value && isElementInViewport(targetElement.value)) {
+        AOS.refresh();
     }
-  }
+}
+
+// Helper function to check if an element is in the viewport
+const isElementInViewport = (el) => {
+    const rect = el.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
 }
 </script>
 <style>
