@@ -78,6 +78,118 @@
         <div>
             <slot />
         </div>
+        <footer class="relative z-10 bg-black w-full">
+            <footer class="container px-6 lg:px-0 mx-auto text-white">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 py-8 md:py-12 lg:py-8">
+                    <div class="flex flex-col items-center lg:items-start">
+                        <img src="/public//image/logo/main.png" alt="" class="w-32 h-10 object-contain mb-4">
+                        <nav class="flex space-x-4 mt-4">
+                            <a href="#">
+                                <i class="bi bi-facebook text-xl"></i>
+                            </a>
+                            <a href="#">
+                                <i class="bi bi-youtube text-xl"></i>
+                            </a>
+                            <a href="#">
+                                <i class="bi bi-instagram text-xl"></i>
+                            </a>
+                            <a href="#">
+                                <i class="bi bi-linkedin text-xl"></i>
+                            </a>
+                        </nav>
+                    </div>
+                    <div class="lg:col-span-3 grid grid-cols-2 lg:grid-cols-3 gap-8 lg:items-start">
+                        <nav class="flex flex-col justify-start h-full">
+                            <div class="cursor-pointer text-base mb-4">
+                                <a href="#">About Us</a>
+                            </div>
+                        </nav>
+                        <nav class="flex flex-col justify-start h-full">
+                            <div class="cursor-pointer text-base mb-4">
+                                <a href="#">News</a>
+                            </div>
+                        </nav>
+                        <nav class="flex flex-col justify-start h-full">
+                            <div class="cursor-pointer text-base mb-4">
+                                <a href="#">Contact</a>
+                            </div>
+                        </nav>
+                        <nav class="flex flex-col justify-start h-full">
+                            <div>
+                                <h3 class="text-base mb-4">Sustainability</h3>
+                                <ul class="space-y-2">
+                                    <li>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">Environment</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">Social</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">Governance</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">NetZero 2030</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <nav class="flex flex-col justify-start h-full">
+                            <div>
+                                <h3 class="text-base mb-4">Solutions</h3>
+                                <ul class="space-y-2">
+                                    <li>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">Hospitality Furniture</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">Architecture & Construction</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">Modular Homes</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">Hospitality Management</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <nav class="flex flex-col justify-start h-full">
+                            <div>
+                                <h3 class="text-base mb-4">Projects</h3>
+                                <ul class="space-y-2">
+                                    <li>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">Category</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">3D Tour</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <nav class="flex flex-col justify-start h-full">
+                            <div class="cursor-pointer text-base mb-4">
+                                <a href="#">Careers</a>
+                            </div>
+                        </nav>
+                        <nav class="flex flex-col justify-start h-full">
+                            <div class="cursor-pointer text-base mb-4">
+                                <a href="#">Contest</a>
+                            </div>
+                        </nav>
+                        <nav class="flex flex-col justify-start h-full">
+                            <div class="cursor-pointer text-base mb-4">
+                                <a href="#">Brochure</a>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="py-2 text-white">
+                    <div class="flex flex-col lg:flex-row items-center justify-between text-sm test-gray-400">
+                        <p>© 2024 TranDuc Corporation</p>
+                    </div>
+                </div>
+            </footer>
+        </footer>
+        <button style="z-index:999 !important;" class="fixed bottom-8 right-3 lg:right-8 bg-gray-800 text-white p-2 rounded-full shadow-lg hover:bg-gray-700 transition-colors duration-300 z-40 opacity-100"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg></button>
     </div>
 </template>
 <script>

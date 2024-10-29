@@ -15,6 +15,7 @@
     "flowbite": "^2.5.2",
     "i18n": "^0.15.1",
     "nuxt": "^3.13.2",
+    "nuxt-bootstrap-icons": "^2.1.0",
     "nuxt-swiper": "^1.2.2",
     "vue": "latest",
     "vue-router": "latest"

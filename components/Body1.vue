@@ -245,6 +245,77 @@
         </div>
       </section>
      </div>
+     <!-- partner -->
+      <div class="w-full h-full flex flex-col mt-2 mb-4">
+        <div class="text-center uppercase font-bold text-xl md:text-2xl lg:text-3xl text-black bg-white py-6">
+          <h2 class="title-body">PARTNER</h2>
+        </div>
+        <div class="container w-full mx-auto px-4">
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 overflow-x-hidden">
+            <div class="flex justify-center">
+              <img src="" class="w-full h-auto max-h-16 min-h-16 object-contain bg-black">
+            </div>
+            <div class="flex justify-center">
+              <img src="" class="w-full h-auto max-h-16 min-h-16 object-contain bg-black">
+            </div>
+            <div class="flex justify-center">
+              <img src="" class="w-full h-auto max-h-16 min-h-16 object-contain bg-black">
+            </div>
+            <div class="flex justify-center">
+              <img src="" class="w-full h-auto max-h-16 min-h-16 object-contain bg-black">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Media sponsorship -->
+       <div class="flex flex-col w-full h-full mt-2 mb-4">
+        <div class="text-center uppercase font-bold text-xl md:text-2xl lg:text-3xl text-black bg-white py-6">
+          <h2 class="title-body">MEDIA SPONSORSHIP</h2>
+        </div>
+        <div class="w-full container mx-auto px-4">
+          <div class="flex flex-nowrap justify-center items-center gap-6 overflow-x-hidden">
+            <div class="flex-shrink-0 flex-grow-0 w-1/4 lg:w-1/6 flex justify-center">
+              <img :src="sponsorship[0].image" :key="sponsorship[0].image" class="w-full h-auto max-h-16 min-h-16 object-contain">
+            </div>
+            <div class="flex-shrink-0 flex-grow-0 w-1/4 lg:w-1/6 flex justify-center">
+              <img :src="sponsorship[1].image" :key="sponsorship[1].image" class="w-full h-auto max-h-16 min-h-16 object-contain">
+            </div>
+            <div class="flex-shrink-0 flex-grow-0 w-1/4 lg:w-1/6 flex justify-center">
+              <img :src="sponsorship[2].image" :key="sponsorship[2].image" class="w-full h-auto max-h-16 min-h-16 object-contain">
+            </div>
+          </div>
+        </div>
+       </div>
+       <!-- Media -->
+        <div class="flex flex-col w-full h-full mt-2 mb-4">
+          <div class="text-center uppercase font-bold text-xl md:text-2xl lg:text-3xl text-black bg-white py-6">
+            <h2 class="title-body">MEDIA</h2>
+          </div>
+          <div class="flex w-full flex-col container mx-auto px-12">
+            <h2 class="text-center text-black text-xl md:text-2xl lg:text-3xl font-bold">This is a Slice</h2>
+          </div>
+        </div>
+        <!-- Bus -->
+         <div class="flex flex-col w-full h-full mt-2 mb-4">
+          <div class="text-center uppercase font-bold text-xl md:text-2xl lg:text-3xl text-black bg-white py-6">
+            <h2 class="title-body">BUS SCHEDULE</h2>
+          </div>
+          <div class="flex flex-col lg:flex-row w-full px-12 lg:px-24 bg-black">
+            <div class="w-full lg:w-1/2 aspect-[16/9] overflow-hidden">
+              <img :src="bus[0].image" :key="bus[0].image" class="w-full h-full object-center">
+            </div>
+            <div class="w-full lg:w-1/2 aspect-[16/9] overflow-hidden">
+              <img :src="bus[1].image" :key="bus[1].image" class="w-full h-full object-center">
+            </div>
+          </div>
+         </div>
+         <!-- Event Venue -->
+          <div class="container mx-auto flex flex-col w-full h-full gap-6 mb-24">
+            <div class="text-start uppercase font-bold text-xl md:text-2xl lg:text-3xl text-black bg-white py-6">
+              <h2 class="title-body">EVENT VENUE</h2>
+            </div>
+            <div class="flex w-full min-h-96 bg-black"></div>
+          </div>
   </div>
 </template>
 
@@ -279,9 +350,14 @@ const timeLine = [
   {image:'/image/netzero/timeline/vi-VN/timeline-2.webp'},
   {image:'/image/netzero/timeline/vi-VN/timeline-4.webp'},
 ];
-const register = [
-  {image:'/image/netzero/form/image.jpg'},
-  {image:'/image/netzero/form/booth.jpg'},
+const sponsorship = [
+  {image:'/image/netzero/logo/elle.png'},
+  {image:'/image/netzero/logo/kienviet.png'},
+  {image:'/image/netzero/logo/cafef.png'}
+];
+const bus = [
+  {image:'/image/netzero/bus/vi-VN/bus-1.webp'},
+  {image:'/image/netzero/bus/vi-VN/bus-2.webp'}
 ]
 
 </script>
