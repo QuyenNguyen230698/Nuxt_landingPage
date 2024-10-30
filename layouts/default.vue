@@ -35,8 +35,8 @@
                     <div class="flex">
                         <div class="flex flex-col w-full h-full gap-6">
                             <div class="container mx-auto flex gap-6">
-                            <button data-aos="fade-down" data-aos-duration="800" class="text-xs sm:text-sm md:text-base py-2 cursor-pointer">{{ $t('app.form.signEvent') }}</button>
-                            <button data-aos="fade-down" data-aos-duration="800" class="text-xs sm:text-sm md:text-base py-2 cursor-pointer">{{ $t('app.form.signBooth') }}</button>
+                            <button @click="scrollToForm('form1')" data-aos="fade-down" data-aos-duration="800" class="nav-item text-xs sm:text-sm md:text-base py-2 cursor-pointer">{{ $t('app.form.signEvent') }}</button>
+                            <button @click="scrollToForm('form2')" data-aos="fade-down" data-aos-duration="800" class="nav-item text-xs sm:text-sm md:text-base py-2 cursor-pointer">{{ $t('app.form.signBooth') }}</button>
                             </div>
                         </div>
                         <div data-aos="fade-down" data-aos-duration="800" class="relative">
@@ -49,12 +49,12 @@
         <div>
             <slot />
         </div>
-        <footer class="relative z-10 bg-black w-full">
+        <footer class="relative z-10 bg-black w-full overflow-hidden">
             <footer class="container px-6 lg:px-0 mx-auto text-white">
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 py-8 md:py-12 lg:py-8">
                     <div class="flex flex-col items-center lg:items-start">
-                        <img data-aos="fade-up" data-aos-duration="1000" src="/public//image/logo/main.png" alt="" class="w-32 h-10 object-contain mb-4">
-                        <nav data-aos="fade-up" data-aos-duration="1000" class="flex space-x-4 mt-4">
+                        <img data-aos="fade-up" data-aos-duration="800" data-aos-offset=“100” src="/public//image/logo/main.png" alt="" class="w-32 h-10 object-contain mb-4">
+                        <nav data-aos="fade-up" data-aos-duration="1000" data-aos-offset=“100” class="flex space-x-4 mt-4">
                             <a href="#">
                                 <i class="bi bi-facebook text-xl"></i>
                             </a>
@@ -70,22 +70,22 @@
                         </nav>
                     </div>
                     <div class="lg:col-span-3 grid grid-cols-2 lg:grid-cols-3 gap-8 lg:items-start">
-                        <nav data-aos="fade-up" data-aos-duration="500" class="flex flex-col justify-start h-full">
+                        <nav data-aos="fade-up" data-aos-duration="800" data-aos-offset=“100” class="flex flex-col justify-start h-full">
                             <div class="cursor-pointer text-base mb-4">
                                 <a href="#">{{ $t('footer.aboutUs') }}</a>
                             </div>
                         </nav>
-                        <nav data-aos="fade-up" data-aos-duration="500" class="flex flex-col justify-start h-full">
+                        <nav data-aos="fade-up" data-aos-duration="800" data-aos-offset=“100” class="flex flex-col justify-start h-full">
                             <div class="cursor-pointer text-base mb-4">
                                 <a href="#">{{ $t('footer.news') }}</a>
                             </div>
                         </nav>
-                        <nav data-aos="fade-up" data-aos-duration="500" class="flex flex-col justify-start h-full">
+                        <nav data-aos="fade-up" data-aos-duration="800" data-aos-offset=“100” class="flex flex-col justify-start h-full">
                             <div class="cursor-pointer text-base mb-4">
                                 <a href="#">{{ $t('footer.contact') }}</a>
                             </div>
                         </nav>
-                        <nav data-aos="fade-up" data-aos-duration="600" class="flex flex-col justify-start h-full">
+                        <nav data-aos="fade-up" data-aos-duration="900" data-aos-offset=“100” class="flex flex-col justify-start h-full">
                             <div>
                                 <h3 class="text-base mb-4">{{ $t('footer.sustainability') }}</h3>
                                 <ul class="space-y-2">
@@ -104,7 +104,7 @@
                                 </ul>
                             </div>
                         </nav>
-                        <nav data-aos="fade-up" data-aos-duration="600" class="flex flex-col justify-start h-full">
+                        <nav data-aos="fade-up" data-aos-duration="900" data-aos-offset=“100” class="flex flex-col justify-start h-full">
                             <div>
                                 <h3 class="text-base mb-4">{{ $t('footer.solutions') }}</h3>
                                 <ul class="space-y-2">
@@ -123,7 +123,7 @@
                                 </ul>
                             </div>
                         </nav>
-                        <nav data-aos="fade-up" data-aos-duration="600" class="flex flex-col justify-start h-full">
+                        <nav data-aos="fade-up" data-aos-duration="900" data-aos-offset=“100” class="flex flex-col justify-start h-full">
                             <div>
                                 <h3 class="text-base mb-4">{{ $t('footer.projects') }}</h3>
                                 <ul class="space-y-2">
@@ -136,17 +136,17 @@
                                 </ul>
                             </div>
                         </nav>
-                        <nav data-aos="fade-up" data-aos-duration="700" class="flex flex-col justify-start h-full">
+                        <nav data-aos="fade-up" data-aos-duration="1000" data-aos-offset=“100” class="flex flex-col justify-start h-full">
                             <div class="cursor-pointer text-base mb-4">
                                 <a href="#">{{ $t('footer.career') }}</a>
                             </div>
                         </nav>
-                        <nav data-aos="fade-up" data-aos-duration="700" class="flex flex-col justify-start h-full">
+                        <nav data-aos="fade-up" data-aos-duration="1000" data-aos-offset=“100” class="flex flex-col justify-start h-full">
                             <div class="cursor-pointer text-base mb-4">
                                 <a href="#">{{ $t('footer.contest') }}</a>
                             </div>
                         </nav>
-                        <nav data-aos="fade-up" data-aos-duration="700" class="flex flex-col justify-start h-full">
+                        <nav data-aos="fade-up" data-aos-duration="1000" data-aos-offset=“100”  class="flex flex-col justify-start h-full">
                             <div class="cursor-pointer text-base mb-4">
                                 <a href="#">{{ $t('footer.brochure') }}</a>
                             </div>
@@ -178,7 +178,9 @@ onMounted(() => {
       duration: 600,
       easing: 'ease-in-sine',
       delay: 100,
-      once: false
+      once: false,
+      mirror: true,
+      anchorPlacement: 'top-bottom',
     });
     window.addEventListener('scroll', refreshAOS);
 })
@@ -202,6 +204,16 @@ const refreshAOS = () => {
     }
 }
 
+const scrollToForm = (formId) => {
+  const element = document.getElementById(formId);
+  if (element) {
+    element.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'center'
+    });
+  }
+}
+
 // Helper function to check if an element is in the viewport
 const isElementInViewport = (el) => {
     const rect = el.getBoundingClientRect();
@@ -214,5 +226,25 @@ const isElementInViewport = (el) => {
 }
 </script>
 <style>
+.nav-item {
+  position: relative;
+  color: #000000;
+}
+
+/* Sử dụng :hover trên .nav-item để kích hoạt hiệu ứng */
+.nav-item:hover:after {
+  width: 100%;
+}
+
+.nav-item:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0; /* Bắt đầu từ 0, sẽ mở rộng khi hover */
+  height: .125rem;
+  background-color: rgba(34, 34, 34, 1);
+  transition: width 0.5s cubic-bezier(.4, 0, .2, 1); /* Thêm hiệu ứng mở rộng */
+}
     
 </style>
