@@ -317,7 +317,7 @@
             <h2 class="title-body">{{ $t('app.media.communication') }}</h2>
           </div>
           <div class="flex w-full flex-col container mx-auto px-12">
-            <ImageGallary :imageUrls="media" :useActive="false" :duration="500" useGap="gap-6"/>
+            <ImageGallary :imageUrls="media" :useActive="false" :duration="1000" useGap="gap-6"/>
           </div>
          </div>
         <!-- Bus -->
@@ -365,8 +365,6 @@ const workshop = computed(() => [
   {image:`/image/netzero/workshop/${locale.value}/workshop-4.webp`},
 ]);
 const speaker = computed(() => [
-  {src:`/image/netzero/speaker/${locale.value}/speaker-1.webp`},
-  {src:`/image/netzero/speaker/${locale.value}/speaker-1.webp`},
   {src:`/image/netzero/speaker/${locale.value}/speaker-1.webp`},
   {src:`/image/netzero/speaker/${locale.value}/speaker-1.webp`},
   {src:`/image/netzero/speaker/${locale.value}/speaker-1.webp`},
