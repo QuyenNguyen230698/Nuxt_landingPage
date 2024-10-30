@@ -35,8 +35,8 @@
                     <div class="flex">
                         <div class="flex flex-col w-full h-full gap-6">
                             <div class="container mx-auto flex gap-6">
-                            <button class="text-xs sm:text-sm md:text-base py-2 cursor-pointer">REGISTER PARTICIPATE</button>
-                            <button class="text-xs sm:text-sm md:text-base py-2 cursor-pointer">REGISTER BOOTH</button>
+                            <button class="text-xs sm:text-sm md:text-base py-2 cursor-pointer">{{ $t('app.form.signEvent') }}</button>
+                            <button class="text-xs sm:text-sm md:text-base py-2 cursor-pointer">{{ $t('app.form.signBooth') }}</button>
                             </div>
                         </div>
                         <div class="relative">
@@ -72,83 +72,83 @@
                     <div class="lg:col-span-3 grid grid-cols-2 lg:grid-cols-3 gap-8 lg:items-start">
                         <nav class="flex flex-col justify-start h-full">
                             <div class="cursor-pointer text-base mb-4">
-                                <a href="#">About Us</a>
+                                <a href="#">{{ $t('footer.aboutUs') }}</a>
                             </div>
                         </nav>
                         <nav class="flex flex-col justify-start h-full">
                             <div class="cursor-pointer text-base mb-4">
-                                <a href="#">News</a>
+                                <a href="#">{{ $t('footer.news') }}</a>
                             </div>
                         </nav>
                         <nav class="flex flex-col justify-start h-full">
                             <div class="cursor-pointer text-base mb-4">
-                                <a href="#">Contact</a>
+                                <a href="#">{{ $t('footer.contact') }}</a>
                             </div>
                         </nav>
                         <nav class="flex flex-col justify-start h-full">
                             <div>
-                                <h3 class="text-base mb-4">Sustainability</h3>
+                                <h3 class="text-base mb-4">{{ $t('footer.sustainability') }}</h3>
                                 <ul class="space-y-2">
                                     <li>
-                                        <a href="#" class="hover:underline cursor-pointer text-sm">Environment</a>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">{{ $t('footer.environment') }}</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="hover:underline cursor-pointer text-sm">Social</a>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">{{ $t('footer.social') }}</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="hover:underline cursor-pointer text-sm">Governance</a>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">{{ $t('footer.governance') }}</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="hover:underline cursor-pointer text-sm">NetZero 2030</a>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">{{ $t('footer.netZero2030') }}</a>
                                     </li>
                                 </ul>
                             </div>
                         </nav>
                         <nav class="flex flex-col justify-start h-full">
                             <div>
-                                <h3 class="text-base mb-4">Solutions</h3>
+                                <h3 class="text-base mb-4">{{ $t('footer.solutions') }}</h3>
                                 <ul class="space-y-2">
                                     <li>
-                                        <a href="#" class="hover:underline cursor-pointer text-sm">Hospitality Furniture</a>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">{{ $t('footer.hospitalityFurniture') }}</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="hover:underline cursor-pointer text-sm">Architecture & Construction</a>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">{{ $t('footer.architectureAndConstruction') }}</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="hover:underline cursor-pointer text-sm">Modular Homes</a>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">{{ $t('footer.modularHomes') }}</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="hover:underline cursor-pointer text-sm">Hospitality Management</a>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">{{ $t('footer.hospitalityManagement') }}</a>
                                     </li>
                                 </ul>
                             </div>
                         </nav>
                         <nav class="flex flex-col justify-start h-full">
                             <div>
-                                <h3 class="text-base mb-4">Projects</h3>
+                                <h3 class="text-base mb-4">{{ $t('footer.projects') }}</h3>
                                 <ul class="space-y-2">
                                     <li>
-                                        <a href="#" class="hover:underline cursor-pointer text-sm">Category</a>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">{{ $t('footer.category') }}</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="hover:underline cursor-pointer text-sm">3D Tour</a>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">{{ $t('footer.threeDTour') }}</a>
                                     </li>
                                 </ul>
                             </div>
                         </nav>
                         <nav class="flex flex-col justify-start h-full">
                             <div class="cursor-pointer text-base mb-4">
-                                <a href="#">Careers</a>
+                                <a href="#">{{ $t('footer.career') }}</a>
                             </div>
                         </nav>
                         <nav class="flex flex-col justify-start h-full">
                             <div class="cursor-pointer text-base mb-4">
-                                <a href="#">Contest</a>
+                                <a href="#">{{ $t('footer.contest') }}</a>
                             </div>
                         </nav>
                         <nav class="flex flex-col justify-start h-full">
                             <div class="cursor-pointer text-base mb-4">
-                                <a href="#">Brochure</a>
+                                <a href="#">{{ $t('footer.brochure') }}</a>
                             </div>
                         </nav>
                     </div>

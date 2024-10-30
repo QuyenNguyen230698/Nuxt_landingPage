@@ -24,14 +24,14 @@
         </div>
         <!-- workshop & speaker -->
         <div class="relative w-full py-6">
-          <div class="absolute inset-0 h-6 lg:h-8 w-2/3 lg:w-1/3 top-[45%]">
+          <div class="absolute inset-0 h-6 lg:h-8 w-2/3 lg:w-1/3 " style="top: 45%;">
             <img v-for="item in background" :src="item.image" :key="item.image" class="w-full h-full object-cover">
           </div>
           <div class="container mx-auto p-0 flex flex-col lg:flex-row w-full h-full gap-3 px-3 md:px-6 lg:px-0">
             <div class="w-full lg:w-1/3 flex flex-col items-start justify-center">
-              <div class="flex lg:flex-col items-start justify-center gap-1 font-bold">
-                <div class="w-fit bg-transparent title-body">EVENTS</div>
-                <div class="w-fit bg-transparent title-body">FEATURED</div>
+              <div class="flex lg:flex-col items-start justify-center gap-1 uppercase font-bold text-xl md:text-2xl lg:text-3xl text-black">
+                <div class="w-fit bg-transparent title-body">{{ $t('app.event.hot1') }}</div>
+                <div class="w-fit bg-transparent title-body">{{ $t('app.event.hot2') }}</div>
               </div>
             </div>
             <div class="w-full lg:w-2/3 grid grid-cols-2 lg:grid-cols-4 gap-1 py-3">
@@ -39,21 +39,19 @@
             </div>
           </div>
         </div>
+        <!-- speaker -->
         <div class="relative w-full py-6">
-          <div class="absolute lg:right-0 h-6 lg:h-8 w-2/3 lg:w-1/3 top-[45%]">
+          <div class="absolute lg:right-0 h-6 lg:h-8 w-2/3 lg:w-1/3 " style="top: 45%;">
             <img v-for="item in background" :src="item.image" :key="item.image" class="w-full h-full object-cover">
           </div>
           <div class="container mx-auto p-0 grid grid-cols-1 lg:grid-cols-3 w-full h-full gap-3 px-3 md:px-6 lg:px-0">
             <div class="order-2 lg:order-1 lg:col-span-2 w-full overflow-x-hidden overflow-y-hidden">
-              <!-- <div class="w-full grid grid-cols-2 lg:grid-cols-4 gap-1 py-3">
-                <img v-for="item in speaker" :src="item.image" :key="item.image" class="w-full h-full object-cover">
-              </div> -->
-              <ImageGallary :imageUrls="speaker" :useActive="true" :duration="500"/>
+              <ImageGallary :imageUrls="speaker" :useActive="true" :duration="1000"/>
             </div>
             <div class="order-1 lg:order-2 lg:col-span-1 flex flex-col items-start lg:items-end justify-center">
-              <div class="flex lg:flex-col items-end justify-center gap-1 font-bold">
-                <div class="w-fit bg-transparent title-body">GUEST</div>
-                <div class="w-fit bg-transparent title-body">SPEAKERS</div>
+              <div class="flex lg:flex-col items-end justify-center gap-1 uppercase font-bold text-xl md:text-2xl lg:text-3xl text-black">
+                <div class="w-fit bg-transparent title-body">{{ $t('app.speaker.speaker1') }}</div>
+                <div class="w-fit bg-transparent title-body">{{ $t('app.speaker.speaker2') }}</div>
               </div>
             </div>
           </div>
@@ -63,10 +61,10 @@
     <!-- Time line -->
     <div class="flex flex-col w-full h-full">
       <div class="relative text-start uppercase font-bold text-xl md:text-2xl lg:text-3xl text-black bg-white py-6">
-        <div class="absolute inset-0 right-0 h-8 w-1/3 top-[45%]">
+        <div class="absolute inset-0 right-0 h-8 w-1/3 " style="top: 45%;">
           <img v-for="item in background" :src="item.image" :key="item.image" class="w-full h-full object-center">
         </div>
-        <h2 class="container mx-auto title-body">TIME LINE</h2>
+        <h2 class="container mx-auto title-body">{{ $t('app.time.timeline') }}</h2>
       </div>
       <div class="w-full h-full container mx-auto grid grid-cols-2 gap-1 px-4 md:px-16 lg:px-28">
         <img v-for="item in timeLine" :src="item.image" :key="item.image" class="w-full h-auto">
@@ -75,8 +73,8 @@
     <!-- Register -->
      <div class="relative w-full h-full flex flex-col py-6">
       <div class="container mx-auto flex gap-6">
-        <button @click="showForm = 'participate'" :class="{'active': showForm === 'participate'}" class="text-xs sm:text-sm md:text-base nav-item py-2 cursor-pointer">REGISTER PARTICIPATE</button>
-        <button @click="showForm = 'booth'" :class="{'active': showForm === 'booth'}" class="text-xs sm:text-sm md:text-base nav-item py-2 cursor-pointer">REGISTER BOOTH</button>
+        <button @click="showForm = 'participate'" :class="{'active': showForm === 'participate'}" class="text-xs sm:text-sm md:text-base nav-item py-2 cursor-pointer">{{ $t('app.form.signEvent') }}</button>
+        <button @click="showForm = 'booth'" :class="{'active': showForm === 'booth'}" class="text-xs sm:text-sm md:text-base nav-item py-2 cursor-pointer">{{ $t('app.form.signBooth') }}</button>
       </div>
      </div>
      <div class="flex flex-col w-full h-full bg-black">
@@ -97,26 +95,26 @@
                         <div class="col-span-2">
                           <label class="block mb-1 font-light text-base">
                             <span class="text-base flex items-center text-center">
-                              Full name
+                              {{ $t('form.fullName') }}
                             </span>
                           </label>
-                          <input type="text" placeholder="Your full name" class="w-full bg-transparent border-b border-gray-500 focus:outline-none py-1 text-base">
+                          <input type="text" :placeholder="$t('form.placeHolderName')" class="w-full bg-transparent border-b border-gray-500 focus:outline-none py-1 text-base">
                         </div>
                         <div class="col-span-2">
                           <label>
-                            <span class="text-base flex items-center text-center">Participation date</span>
+                            <span class="text-base flex items-center text-center">{{ $t('form.joinDate') }}</span>
                           </label>
                           <div class="grid grid-cols-2">
                             <div class="col-span-1">
                               <label class="flex items-start">
-                                <input type="checkbox" checked class="text-sm border border-white rounded-full">
-                                <p class="ml-3">21/11/2024</p>
+                                <input type="checkbox" class="checkbox text-sm border border-white rounded-full">
+                                <p class="ml-3 cursor-pointer">21/11/2024</p>
                               </label>
                             </div>
                             <div class="col-span-1">
                               <label class="flex items-start">
-                                <input type="checkbox" checked class="text-sm border border-white rounded-full">
-                                <p class="ml-3">21/11/2024</p>
+                                <input type="checkbox"  class="checkbox text-sm border border-white rounded-full">
+                                <p class="ml-3 cursor-pointer">22/11/2024</p>
                               </label>
                             </div>
                           </div>
@@ -124,44 +122,46 @@
                         <div class="col-span-2 lg:col-span-1">
                           <label class="block mb-1 font-light text-base">
                             <span class="text-base flex items-center text-center">
-                              Email
+                              {{ $t('form.email') }}
                             </span>
                           </label>
-                          <input type="email" placeholder="Your email" class="w-full bg-transparent border-b border-gray-500 focus:outline-none py-1 text-base">
+                          <input type="email" :placeholder="$t('form.placeHolderEmail')" class="w-full bg-transparent border-b border-gray-500 focus:outline-none py-1 text-base">
                         </div>
                         <div class="col-span-2 lg:col-span-1">
                           <label class="block mb-1 font-light text-base">
-                            <span class="text-base text-center flex items-center">Phone number</span>
+                            <span class="text-base text-center flex items-center">
+                              {{ $t('form.phone') }}
+                            </span>
                           </label>
-                          <input type="tel" placeholder="Your phone number" class="w-full bg-transparent border-b border-gray-500 focus:outline-none py-1 text-base">
+                          <input type="tel" :placeholder="$t('form.placeHolderPhone')" class="w-full bg-transparent border-b border-gray-500 focus:outline-none py-1 text-base">
                         </div>
                         <div class="col-span-2">
                           <label class="flex items-center">
-                            <input type="checkbox" class="text-sm border border-white rounded-full">
-                            <p class="ml-3">Are you a student?</p>
+                            <input type="checkbox" class="checkbox text-sm border border-white rounded-full">
+                            <p class="ml-3 cursor-pointer">{{ $t('form.isStudent') }}</p>
                           </label>
                         </div>
                         <div class="col-span-2">
                           <label class="block mb-1 font-light text-base">
-                            <span class="text-base flex items-center text-center">Company name</span>
+                            <span class="text-base flex items-center text-center">{{ $t('form.companyName') }}</span>
                           </label>
-                          <input type="text" placeholder="Your company name" class="w-full bg-transparent border-b border-gray-500 focus:outline-none py-1 text-base">
+                          <input type="text" :placeholder="$t('form.companyName')" class="w-full bg-transparent border-b border-gray-500 focus:outline-none py-1 text-base">
                         </div>
                         <div class="col-span-2">
                           <label class="block mb-1 font-light text-base">
-                            <span class="text-base flex items-center text-center">Position</span>
+                            <span class="text-base flex items-center text-center">{{ $t('form.position') }}</span>
                           </label>
-                          <input type="text" placeholder="Position" class="w-full bg-transparent border-b border-gray-500 focus:outline-none py-1 text-base">
+                          <input type="text" :placeholder="$t('form.position')" class="w-full bg-transparent border-b border-gray-500 focus:outline-none py-1 text-base">
                         </div>
                         <div class="col-span-2">
                           <label class="inline-flex items-center">
                             <span class="text-sm text-gray-400 text-justify">
-                              We are committed to using customer information safely, legally, and in compliance with current laws and regulations.
+                              {{ $t('form.textPolicy') }}
                             </span>
                           </label>
                         </div>
                         <div class="col-span-2 flex justify-center">
-                          <button class="w-full btn bg-white rounded-none text-black py-1 md:py-2 hover:bg-gray-600 hover:text-white transition-colors duration-300 ease-in-out">Register</button>
+                          <button class="w-full btn bg-white rounded-none border-none text-black py-1 md:py-2 hover:bg-gray-600 hover:text-white transition-colors duration-300 ease-in-out">{{ $t('form.textButton') }}</button>
                         </div>
                       </div>
                     </div>
@@ -189,52 +189,52 @@
                         <div class="col-span-2">
                           <label class="block mb-1 font-light text-base">
                             <span class="text-base flex items-center text-center">
-                              Full name
+                              {{ $t('form.fullName') }}
                             </span>
                           </label>
-                          <input type="text" placeholder="Your full name" class="w-full bg-transparent border-b border-gray-500 focus:outline-none py-1 text-base">
+                          <input type="text" :placeholder="$t('form.placeHolderName')" class="w-full bg-transparent border-b border-gray-500 focus:outline-none py-1 text-base">
                         </div>
                         <div class="col-span-2">
                           <label class="block mb-1 font-light text-base">
                             <span class="text-base flex items-center text-center">
-                              Email
+                              {{ $t('form.email') }}
                             </span>
                           </label>
-                          <input type="email" placeholder="Your email" class="w-full bg-transparent border-b border-gray-500 focus:outline-none py-1 text-base">
+                          <input type="email" :placeholder="$t('form.placeHolderEmail')" class="w-full bg-transparent border-b border-gray-500 focus:outline-none py-1 text-base">
                         </div>
                         <div class="col-span-2">
                           <label class="block mb-1 font-light text-base">
-                            <span class="text-base text-center flex items-center">Phone number</span>
+                            <span class="text-base text-center flex items-center">
+                              {{ $t('form.phone') }}
+                            </span>
                           </label>
-                          <input type="tel" placeholder="Your phone number" class="w-full bg-transparent border-b border-gray-500 focus:outline-none py-1 text-base">
-                        </div>
-                        <div class="col-span-2">
-                          <label class="flex items-center">
-                            <input type="checkbox" class="text-sm border border-white rounded-full">
-                            <p class="ml-3">Are you a student?</p>
-                          </label>
+                          <input type="tel" :placeholder="$t('form.placeHolderPhone')" class="w-full bg-transparent border-b border-gray-500 focus:outline-none py-1 text-base">
                         </div>
                         <div class="col-span-2">
                           <label class="block mb-1 font-light text-base">
-                            <span class="text-base flex items-center text-center">Company name</span>
+                            <span class="text-base flex items-center text-center">
+                              {{ $t('form.companyName') }}
+                            </span>
                           </label>
-                          <input type="text" placeholder="Your company name" class="w-full bg-transparent border-b border-gray-500 focus:outline-none py-1 text-base">
+                          <input type="text" :placeholder="$t('form.companyName')" class="w-full bg-transparent border-b border-gray-500 focus:outline-none py-1 text-base">
                         </div>
                         <div class="col-span-2">
                           <label class="block mb-1 font-light text-base">
-                            <span class="text-base flex items-center text-center">Position</span>
+                            <span class="text-base flex items-center text-center">
+                              {{ $t('form.position') }}
+                            </span>
                           </label>
-                          <input type="text" placeholder="Position" class="w-full bg-transparent border-b border-gray-500 focus:outline-none py-1 text-base">
+                          <input type="text" :placeholder="$t('form.position')" class="w-full bg-transparent border-b border-gray-500 focus:outline-none py-1 text-base">
                         </div>
                         <div class="col-span-2">
                           <label class="inline-flex items-center">
                             <span class="text-sm text-gray-400 text-justify">
-                              We are committed to using customer information safely, legally, and in compliance with current laws and regulations.
+                              {{ $t('form.textPolicy') }}
                             </span>
                           </label>
                         </div>
                         <div class="col-span-2 flex justify-center">
-                          <button class="w-full btn bg-white rounded-none text-black py-1 md:py-2 hover:bg-gray-600 hover:text-white transition-colors duration-300 ease-in-out">Register</button>
+                          <button class="w-full btn bg-white rounded-none border-none text-black py-1 md:py-2 hover:bg-gray-600 hover:text-white transition-colors duration-300 ease-in-out">{{ $t('form.textButton') }}</button>
                         </div>
                       </div>
                     </div>
@@ -249,7 +249,7 @@
      <!-- partner -->
       <div class="w-full h-full flex flex-col mt-2 mb-4">
         <div class="text-center uppercase font-bold text-xl md:text-2xl lg:text-3xl text-black bg-white py-6">
-          <h2 class="title-body">PARTNER</h2>
+          <h2 class="title-body">{{ $t('app.partner.partner') }}</h2>
         </div>
         <div class="container w-full mx-auto px-4">
           <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 overflow-x-hidden">
@@ -271,7 +271,7 @@
       <!-- Media sponsorship -->
        <div class="flex flex-col w-full h-full mt-2 mb-4">
         <div class="text-center uppercase font-bold text-xl md:text-2xl lg:text-3xl text-black bg-white py-6">
-          <h2 class="title-body">MEDIA SPONSORSHIP</h2>
+          <h2 class="title-body">{{ $t('app.media.ponsorship') }}</h2>
         </div>
         <div class="w-full container mx-auto px-4">
           <div class="flex flex-nowrap justify-center items-center gap-6 overflow-x-hidden">
@@ -288,18 +288,18 @@
         </div>
        </div>
        <!-- Media -->
-        <div class="flex flex-col w-full h-full mt-2 mb-4">
+         <div class="flex flex-col w-full h-full mt-2 mb-4">
           <div class="text-center uppercase font-bold text-xl md:text-2xl lg:text-3xl text-black bg-white py-6">
-            <h2 class="title-body">MEDIA</h2>
+            <h2 class="title-body">{{ $t('app.media.communication') }}</h2>
           </div>
           <div class="flex w-full flex-col container mx-auto px-12">
             <ImageGallary :imageUrls="media" :useActive="false" :duration="500" useGap="gap-6"/>
           </div>
-        </div>
+         </div>
         <!-- Bus -->
          <div class="flex flex-col w-full h-full mt-2 mb-4">
           <div class="text-center uppercase font-bold text-xl md:text-2xl lg:text-3xl text-black bg-white py-6">
-            <h2 class="title-body">BUS SCHEDULE</h2>
+            <h2 class="title-body">{{ $t('app.bus.schedule') }}</h2>
           </div>
           <div class="flex flex-col lg:flex-row w-full px-12 lg:px-24 bg-black">
             <div class="w-full lg:w-1/2 aspect-[16/9] overflow-hidden">
@@ -311,9 +311,9 @@
           </div>
          </div>
          <!-- Event Venue -->
-          <div class="container mx-auto flex flex-col w-full h-full gap-6 mb-24">
+         <div class="container mx-auto flex flex-col w-full h-full gap-6 mb-24">
             <div class="text-start uppercase font-bold text-xl md:text-2xl lg:text-3xl text-black bg-white py-6">
-              <h2 class="title-body">EVENT VENUE</h2>
+              <h2 class="title-body">{{ $t('app.event.venue') }}</h2>
             </div>
             <div class="flex w-full min-h-96 bg-black"></div>
           </div>
@@ -325,31 +325,31 @@ import { ref } from 'vue';
 const { locale } = useI18n()
 const showForm = ref('participate')
 
-const section = [
-  {image:'/image/netzero/section/vi-VN/1.webp'},
-  {image:'/image/netzero/section/vi-VN/2fix.webp'},
-  {image:'/image/netzero/section/vi-VN/3.webp'},
-  {image:'/image/netzero/section/vi-VN/4.webp'},
-];
+const section = computed(() => [
+  {image:`/image/netzero/section/${locale.value}/1.webp`},
+  {image:`/image/netzero/section/${locale.value}/2fix.webp`},
+  {image:`/image/netzero/section/${locale.value}/3.webp`},
+  {image:`/image/netzero/section/${locale.value}/4.webp`},
+]);
 const background = [
   {image:'/image/netzero/background/bg-title.png'}
 ];
-const workshop = [
-  {image:'/image/netzero/workshop/vi-VN/workshop-1.webp'},
-  {image:'/image/netzero/workshop/vi-VN/workshop-2.webp'},
-  {image:'/image/netzero/workshop/vi-VN/workshop-3.webp'},
-  {image:'/image/netzero/workshop/vi-VN/workshop-4.webp'},
-];
-const speaker = [
-  {src:'/image/netzero/speaker/vi-VN/speaker-1.webp'},
-  {src:'/image/netzero/speaker/vi-VN/speaker-1.webp'},
-  {src:'/image/netzero/speaker/vi-VN/speaker-1.webp'},
-  {src:'/image/netzero/speaker/vi-VN/speaker-1.webp'},
-  {src:'/image/netzero/speaker/vi-VN/speaker-1.webp'},
-  {src:'/image/netzero/speaker/vi-VN/speaker-1.webp'},
-  {src:'/image/netzero/speaker/vi-VN/speaker-1.webp'},
-  {src:'/image/netzero/speaker/vi-VN/speaker-1.webp'}
-];
+const workshop = computed(() => [
+  {image:`/image/netzero/workshop/${locale.value}/workshop-1.webp`},
+  {image:`/image/netzero/workshop/${locale.value}/workshop-2.webp`},
+  {image:`/image/netzero/workshop/${locale.value}/workshop-3.webp`},
+  {image:`/image/netzero/workshop/${locale.value}/workshop-4.webp`},
+]);
+const speaker = computed(() => [
+  {src:`/image/netzero/speaker/${locale.value}/speaker-1.webp`},
+  {src:`/image/netzero/speaker/${locale.value}/speaker-1.webp`},
+  {src:`/image/netzero/speaker/${locale.value}/speaker-1.webp`},
+  {src:`/image/netzero/speaker/${locale.value}/speaker-1.webp`},
+  {src:`/image/netzero/speaker/${locale.value}/speaker-1.webp`},
+  {src:`/image/netzero/speaker/${locale.value}/speaker-1.webp`},
+  {src:`/image/netzero/speaker/${locale.value}/speaker-1.webp`},
+  {src:`/image/netzero/speaker/${locale.value}/speaker-1.webp`}
+]);
 const timeLine = computed(() => [
   {image:`/image/netzero/timeline/${locale.value}/timeline-one.webp`},
   {image:`/image/netzero/timeline/${locale.value}/timeline-3.webp`},
@@ -361,10 +361,10 @@ const sponsorship = [
   {image:'/image/netzero/logo/kienviet.png'},
   {image:'/image/netzero/logo/cafef.png'}
 ];
-const bus = [
-  {image:'/image/netzero/bus/vi-VN/bus-1.webp'},
-  {image:'/image/netzero/bus/vi-VN/bus-2.webp'}
-];
+const bus = computed(() => [
+  {image:`/image/netzero/bus/${locale.value}/bus-1.webp`},
+  {image:`/image/netzero/bus/${locale.value}/bus-2.webp`}
+]);
 const media = [
   {src:'/image/netzero/communication/1.png'},
   {src:'/image/netzero/communication/2.png'},
