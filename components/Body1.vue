@@ -1,4 +1,50 @@
 <template>
+  <div>
+    <header class="bg-black hover:bg-white transition-colors duration-1000 ease-in-out sticky z-50 top-0 left-0 right-0 shadow w-full"
+        :class="{'bg-white': isScrolled}">
+            <div class="container mx-auto px-2 sm:px-4 lg:px-6 xl:px-8 animate-fade-down duration-1000 ease-in-out flex items-center justify-between h-8 sm:h-12 lg:h-16 xl:h-20 relative navbar">
+                <div class="navbar-start h-8 sm:h-12 lg:h-16 xl:h-20">
+                    <a href="#">
+                        <img class="w-fit h-auto object-contain max-w-full max-h-full" src="/public/image/netzero/header/logo.png" alt="logo" />
+                    </a>
+                </div>
+                <div class="navbar-end h-10 flex justify-end">
+                    <div class="flex">
+                        <div class="flex flex-col w-full h-full gap-6">
+                            <div class="container mx-auto flex gap-6 text-white">
+                            <button class="text-xs sm:text-sm md:text-base py-2 cursor-pointer">{{ $t('app.form.signEvent') }}</button>
+                            <button class="text-xs sm:text-sm md:text-base py-2 cursor-pointer">{{ $t('app.form.signBooth') }}</button>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <LanguageSwitch/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- hover header -->
+            <div class="container mx-auto px-2 sm:px-4 lg:px-6 xl:px-8 flex items-center justify-between h-8 sm:h-12 lg:h-16 xl:h-20 absolute top-0 left-0 right-0 navbar opacity-0 hover:opacity-100 hover:z-50"
+            :class="{'opacity-100': isScrolled}">
+                <div class="navbar-start h-8 sm:h-12 lg:h-16 xl:h-20">
+                    <a href="#">
+                        <img class="w-fit h-auto object-contain max-w-full max-h-full" src="/public/image/netzero/header/logo-light.png" alt="logo" />
+                    </a>
+                </div>
+                <div class="navbar-end h-10 flex justify-end">
+                    <div class="flex">
+                        <div class="flex flex-col w-full h-full gap-6">
+                            <div class="container mx-auto flex gap-6">
+                            <button @click="scrollToForm('participate')" class="nav-item text-xs sm:text-sm md:text-base py-2 cursor-pointer">{{ $t('app.form.signEvent') }}</button>
+                            <button @click="scrollToForm('booth')" class="nav-item text-xs sm:text-sm md:text-base py-2 cursor-pointer">{{ $t('app.form.signBooth') }}</button>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <LanguageSwitch/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
   <div class="relative w-full z-20 overflow-hidden flex flex-col">
     <img data-aos="fade-up" data-aos-duration='1000' data-aos-offset=“100” src="/public/image/netzero/header/banner.jpg" alt="" />
     <div class="bg-main w-full h-full relative flex flex-col">
@@ -75,25 +121,7 @@
       </div>
     </div>
     <!-- Time line -->
-    <div class="flex flex-col w-full h-full">
-      <div class="relative text-start uppercase font-bold text-xl md:text-2xl lg:text-3xl text-black bg-white py-6">
-        <div class="absolute inset-0 right-0 h-8 w-1/3 " style="top: 45%;">
-          <img v-for="item in background" :src="item.image" :key="item.image" class="w-full h-full object-center">
-        </div>
-        <h2 data-aos="fade-down" data-aos-duration='500' data-aos-offset=“100” class="container mx-auto title-body">{{ $t('app.time.timeline') }}</h2>
-      </div>
-      <div class="w-full h-full container mx-auto grid grid-cols-2 gap-1 px-4 md:px-16 lg:px-28">
-        <img 
-          v-for="(item, index) in timeLine" 
-          :src="item.image" 
-          :key="item.image" 
-          :data-aos="index % 2 === 0 ? 'fade-right' : 'fade-left'"
-          :data-aos-duration="index < 2 ? 1000 : 1200"
-          data-aos-offset="100"
-          class="w-full h-auto"
-        >
-      </div>
-    </div>
+    <TimeLine :timeLine="timeLine" :background="background"/>
     <!-- Register -->
      <div class="relative w-full h-full flex flex-col py-6">
       <div class="container mx-auto flex gap-6">
@@ -101,9 +129,9 @@
         <button @click="showForm = 'booth'" :class="{'active': showForm === 'booth'}" data-aos="fade-up" data-aos-duration='1200' data-aos-offset=“100” class="text-xs sm:text-sm md:text-base nav-item py-2 cursor-pointer">{{ $t('app.form.signBooth') }}</button>
       </div>
      </div>
-     <div class="flex flex-col w-full h-full bg-black">
+     <div ref="areaForm" class="flex flex-col w-full h-full bg-black">
       <!-- form 1 -->
-      <section id="form1" v-if="showForm === 'participate'" class="container mx-auto flex flex-col overflow-hidden items-center bg-black">
+      <section v-if="showForm === 'participate'" class="container mx-auto flex flex-col overflow-hidden items-center bg-black">
         <div class="relative hero-module">
           <div class="relative grid-module">
             <div class="wrapper-container">
@@ -197,7 +225,7 @@
         </div>
       </section>
       <!-- form 2 -->
-      <section id="form2" v-if="showForm === 'booth'" class="container mx-auto flex flex-col overflow-hidden items-center bg-black">
+      <section v-if="showForm === 'booth'" class="container mx-auto flex flex-col overflow-hidden items-center bg-black">
         <div class="relative hero-module">
           <div class="relative grid-module">
             <div class="wrapper-container">
@@ -342,12 +370,136 @@
             <div class="flex w-full min-h-96 bg-black"></div>
           </div>
   </div>
+       <footer class="relative z-10 bg-black w-full overflow-hidden">
+            <footer class="container px-6 lg:px-0 mx-auto text-white">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 py-8 md:py-12 lg:py-8">
+                    <div class="flex flex-col items-center lg:items-start">
+                        <img data-aos="fade-up" data-aos-duration="800" data-aos-offset=“100” src="/public//image/logo/main.png" alt="" class="w-32 h-10 object-contain mb-4">
+                        <nav data-aos="fade-up" data-aos-duration="1000" data-aos-offset=“100” class="flex space-x-4 mt-4">
+                            <a href="#">
+                                <i class="bi bi-facebook text-xl"></i>
+                            </a>
+                            <a href="#">
+                                <i class="bi bi-youtube text-xl"></i>
+                            </a>
+                            <a href="#">
+                                <i class="bi bi-instagram text-xl"></i>
+                            </a>
+                            <a href="#">
+                                <i class="bi bi-linkedin text-xl"></i>
+                            </a>
+                        </nav>
+                    </div>
+                    <div class="lg:col-span-3 grid grid-cols-2 lg:grid-cols-3 gap-8 lg:items-start">
+                        <nav data-aos="fade-up" data-aos-duration="800" data-aos-offset=“100” class="flex flex-col justify-start h-full">
+                            <div class="cursor-pointer text-base mb-4">
+                                <a href="#">{{ $t('footer.aboutUs') }}</a>
+                            </div>
+                        </nav>
+                        <nav data-aos="fade-up" data-aos-duration="800" data-aos-offset=“100” class="flex flex-col justify-start h-full">
+                            <div class="cursor-pointer text-base mb-4">
+                                <a href="#">{{ $t('footer.news') }}</a>
+                            </div>
+                        </nav>
+                        <nav data-aos="fade-up" data-aos-duration="800" data-aos-offset=“100” class="flex flex-col justify-start h-full">
+                            <div class="cursor-pointer text-base mb-4">
+                                <a href="#">{{ $t('footer.contact') }}</a>
+                            </div>
+                        </nav>
+                        <nav data-aos="fade-up" data-aos-duration="900" data-aos-offset=“100” class="flex flex-col justify-start h-full">
+                            <div>
+                                <h3 class="text-base mb-4">{{ $t('footer.sustainability') }}</h3>
+                                <ul class="space-y-2">
+                                    <li>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">{{ $t('footer.environment') }}</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">{{ $t('footer.social') }}</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">{{ $t('footer.governance') }}</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">{{ $t('footer.netZero2030') }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <nav data-aos="fade-up" data-aos-duration="900" data-aos-offset=“100” class="flex flex-col justify-start h-full">
+                            <div>
+                                <h3 class="text-base mb-4">{{ $t('footer.solutions') }}</h3>
+                                <ul class="space-y-2">
+                                    <li>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">{{ $t('footer.hospitalityFurniture') }}</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">{{ $t('footer.architectureAndConstruction') }}</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">{{ $t('footer.modularHomes') }}</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">{{ $t('footer.hospitalityManagement') }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <nav data-aos="fade-up" data-aos-duration="900" data-aos-offset=“100” class="flex flex-col justify-start h-full">
+                            <div>
+                                <h3 class="text-base mb-4">{{ $t('footer.projects') }}</h3>
+                                <ul class="space-y-2">
+                                    <li>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">{{ $t('footer.category') }}</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="hover:underline cursor-pointer text-sm">{{ $t('footer.threeDTour') }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <nav data-aos="fade-up" data-aos-duration="1000" data-aos-offset=“100” class="flex flex-col justify-start h-full">
+                            <div class="cursor-pointer text-base mb-4">
+                                <a href="#">{{ $t('footer.career') }}</a>
+                            </div>
+                        </nav>
+                        <nav data-aos="fade-up" data-aos-duration="1000" data-aos-offset=“100” class="flex flex-col justify-start h-full">
+                            <div class="cursor-pointer text-base mb-4">
+                                <a href="#">{{ $t('footer.contest') }}</a>
+                            </div>
+                        </nav>
+                        <nav data-aos="fade-up" data-aos-duration="1000" data-aos-offset=“100”  class="flex flex-col justify-start h-full">
+                            <div class="cursor-pointer text-base mb-4">
+                                <a href="#">{{ $t('footer.brochure') }}</a>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="py-2 text-gray-500">
+                    <div class="flex flex-col lg:flex-row items-center justify-between text-sm test-gray-400">
+                        <p>© 2024 TranDuc Corporation</p>
+                    </div>
+                </div>
+            </footer>
+        </footer>
+  </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 const { locale } = useI18n()
 const showForm = ref('participate')
+const setCurrentForm = (form) => {
+  showForm.value = form
+}
+const areaForm = ref(null)
+const scrollToForm = (form) => {
+  setCurrentForm(form)
+  if (form && areaForm.value) {
+    const offset = 180;
+    const elementPosition = areaForm.value.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({top: elementPosition - offset, behavior: 'smooth'})
+  }
+}
 
 const section = computed(() => [
   {image:`/image/netzero/section/${locale.value}/1.webp`},
@@ -408,6 +560,24 @@ const media = [
   {src:'/image/netzero/communication/18.png'}
 ]
 
+const isScrolled = ref(false)
+const targetElement = ref(null) 
+
+onMounted(() => {
+    window.addEventListener('scroll', checkScrollHover);
+})
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', checkScrollHover);
+})
+
+const checkScrollHover = () => {
+    if (window.scrollY > 50) {
+        isScrolled.value = true;
+    } else {
+        isScrolled.value = false;
+    }
+}
 
 </script>
 <style scoped>
