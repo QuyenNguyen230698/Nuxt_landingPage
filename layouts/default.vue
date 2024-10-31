@@ -1,42 +1,49 @@
 <template>
-    <ClientOnly>
+  <ClientOnly>
     <div>
-        <slot />
-        <ButtonScrollToTop />
+      <slot />
+      <ButtonScrollToTop />
     </div>
-</ClientOnly>
+  </ClientOnly>
 </template>
-<script setup>
-import AOS from 'aos'
-import 'aos/dist/aos.css'
 
-// Reference to the target element
-const targetElement = ref(null) 
+<script setup>
+import { ref, onMounted, onUnmounted, watch } from 'vue';
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+const showHeader = ref(false);
+const scrollY = ref(0);
+
+const updateScroll = () => {
+  scrollY.value = window.scrollY;
+  if (scrollY.value > 50) {
+    showHeader.value = true;
+  } else {
+    showHeader.value = false;
+  }
+};
 
 onMounted(() => {
-    AOS.init({
-      offset: 200,
-      duration: 600,
-      easing: 'ease-in-sine',
-      delay: 100,
-      once: false,
-      mirror: true,
-      anchorPlacement: 'top-bottom',
-    });
-    window.addEventListener('scroll', refreshAOS);
-})
+  AOS.init({
+    offset: 200,
+    duration: 600,
+    easing: "ease-in-sine",
+    delay: 100,
+    once: false,
+    mirror: true,
+    anchorPlacement: "top-bottom",
+  });
+  window.addEventListener("scroll", updateScroll);
+});
 
 onUnmounted(() => {
-    window.removeEventListener('scroll', refreshAOS);
-})
+  window.removeEventListener("scroll", updateScroll);
+});
 
-const refreshAOS = () => {
-    if (targetElement.value && isElementInViewport(targetElement.value)) {
-        AOS.refresh();
-    }
-}
-
+watch(scrollY, (newVal) => {
+  if (newVal > 50) {
+    showHeader.value = true;
+  }
+});
 </script>
-<style>
-    
-</style>

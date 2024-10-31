@@ -2,82 +2,44 @@
   <div>
     <!-- header -->
     <header
-      class="bg-black hover:bg-white transition-colors duration-1000 ease-in-out sticky z-50 top-0 left-0 right-0 shadow w-full"
-      :class="{ 'bg-white': isScrolled }"
-    >
-      <div
-        class="container mx-auto px-2 sm:px-4 lg:px-6 xl:px-8 animate-fade-down duration-1000 ease-in-out flex items-center justify-between h-8 sm:h-12 lg:h-16 xl:h-20 relative navbar"
-      >
-        <div class="navbar-start h-8 sm:h-12 lg:h-16 xl:h-20">
-          <a href="#">
-            <img
-              class="w-fit h-auto object-contain max-w-full max-h-full"
-              src="/public/image/netzero/header/logo.png"
-              alt="logo"
-            />
-          </a>
-        </div>
-        <div class="navbar-end h-10 flex justify-end">
-          <div class="flex">
-            <div class="flex flex-col w-full h-full gap-6">
-              <div class="container mx-auto flex gap-6 text-white">
-                <button
-                  class="text-xs sm:text-sm md:text-base py-2 cursor-pointer"
-                >
-                  {{ $t("app.form.signEvent") }}
-                </button>
-                <button
-                  class="text-xs sm:text-sm md:text-base py-2 cursor-pointer"
-                >
-                  {{ $t("app.form.signBooth") }}
-                </button>
+        class="bg-black transition-colors duration-1000 ease-in-out sticky z-50 top-0 left-0 right-0 shadow w-full">
+        <div
+          class="px-0 animate-fade-down duration-1000 ease-in-out"
+          :class="{'bg-black': !showHeader, 'bg-white': showHeader}"
+          @mouseover="showHeader = true"
+          @mouseleave="showHeader = scrollY > 50">
+          <div class="lg:container mx-auto navbar flex flex-col lg:flex-row w-full items-center lg:justify-between">
+            <div class="lg:navbar-start h-16 min-h-16 py-0 w-full flex justify-between container">
+              <a href="/">
+                <img
+                  class="w-fit h-auto object-contain max-w-full max-h-full"
+                  :src="showHeader ? '/image/netzero/header/logo-light.png' : '/image/netzero/header/logo.png'"
+                  alt="logo"/>
+              </a>
+              <div class="lg:hidden">
+                <LanguageSwitch />
               </div>
             </div>
-            <div class="relative">
-              <LanguageSwitch />
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- hover header -->
-      <div
-        class="container mx-auto px-2 sm:px-4 lg:px-6 xl:px-8 flex items-center justify-between h-8 sm:h-12 lg:h-16 xl:h-20 absolute top-0 left-0 right-0 navbar opacity-0 hover:opacity-100 hover:z-50"
-        :class="{ 'opacity-100': isScrolled }"
-      >
-        <div class="navbar-start h-8 sm:h-12 lg:h-16 xl:h-20">
-          <a href="#">
-            <img
-              class="w-fit h-auto object-contain max-w-full max-h-full"
-              src="/public/image/netzero/header/logo-light.png"
-              alt="logo"
-            />
-          </a>
-        </div>
-        <div class="navbar-end h-10 flex justify-end">
-          <div class="flex">
-            <div class="flex flex-col w-full h-full gap-6">
-              <div class="container mx-auto flex gap-6">
+            <div class="lg:navbar-end flex w-full items-center justify-center gap-4 border-t border-white lg:border-none h-10 z-10 lg:justify-end">
+              <div :class="{'text-white': !showHeader, 'text-black': showHeader}" class="flex items-center justify-center gap-4 text-nowrap">
                 <button
                   @click="scrollToForm('participate')"
-                  class="nav-item text-xs sm:text-sm md:text-base py-2 cursor-pointer"
-                >
+                  class="text-sm sm:text-sm md:text-base py-2 cursor-pointer nav-item">
                   {{ $t("app.form.signEvent") }}
                 </button>
                 <button
                   @click="scrollToForm('booth')"
-                  class="nav-item text-xs sm:text-sm md:text-base py-2 cursor-pointer"
-                >
+                  class="text-sm sm:text-sm md:text-base py-2 cursor-pointer nav-item">
                   {{ $t("app.form.signBooth") }}
                 </button>
               </div>
-            </div>
-            <div class="relative">
-              <LanguageSwitch />
+              <div class="hidden lg:block">
+                <LanguageSwitch />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
     <!-- main -->
     <div class="relative w-full z-20 overflow-hidden flex flex-col">
       <img
@@ -362,12 +324,25 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, } from 'vue';
+
 const { locale } = useI18n();
 const showForm = ref("participate");
 const setCurrentForm = (form) => {
   showForm.value = form;
 };
+
+const showHeader = ref(false);
+const scrollY = ref(0);
+const updateScroll = () => {
+  scrollY.value = window.scrollY;
+  if (scrollY.value > 50) {
+    showHeader.value = true;
+  } else {
+    showHeader.value = false;
+  }
+};
+
 const areaForm = ref(null);
 const scrollToForm = (form) => {
   setCurrentForm(form);
@@ -436,24 +411,19 @@ const media = [
   { src: "/image/netzero/communication/18.png" },
 ];
 
-const isScrolled = ref(false);
-const targetElement = ref(null);
-
 onMounted(() => {
-  window.addEventListener("scroll", checkScrollHover);
+  window.addEventListener("scroll", updateScroll);
 });
 
 onUnmounted(() => {
-  window.removeEventListener("scroll", checkScrollHover);
+  window.removeEventListener("scroll", updateScroll);
 });
 
-const checkScrollHover = () => {
-  if (window.scrollY > 50) {
-    isScrolled.value = true;
-  } else {
-    isScrolled.value = false;
+watch(scrollY, (newVal) => {
+  if (newVal > 50) {
+    showHeader.value = true;
   }
-};
+});
 </script>
 <style scoped>
 .bg-main {
