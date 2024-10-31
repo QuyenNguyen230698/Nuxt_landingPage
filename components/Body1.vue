@@ -2,108 +2,53 @@
   <div>
     <!-- header -->
     <header
-        class="animate-fade-down duration-1000 ease-in-out sticky z-50 top-0 left-0 right-0 shadow w-full group">
-        <!-- header black (default visible) -->
-          <div 
-            class="px-0 bg-black "
-            :class="{
-              'hidden': showHeader,
-              'block group-hover:hidden': !showHeader
-            }"
-          >
-            <div
-              class="lg:container mx-auto navbar flex flex-col lg:flex-row w-full items-center lg:justify-between"
-            >
-              <div
-                class="lg:navbar-start h-16 min-h-16 py-0 w-full flex justify-between container"
-              >
-                <a href="/" >
-                  <img
-                    class="w-fit h-auto object-contain max-w-full max-h-full"
-                    src="public/image/netzero/header/logo.png"
-                    alt="logo"
-                  />
-                </a>
-                <div class="lg:hidden">
-                  <LanguageSwitch />
-                </div>
-              </div>
-              <div
-                class="lg:navbar-end flex w-full items-center justify-center gap-4 border-t border-white lg:border-none h-10 z-10 lg:justify-end "
-              >
-                <div
-                  class="flex items-center justify-center gap-4 text-nowrap text-white"
-                >
-                  <button
-                    @click="scrollToForm('participate')"
-                    class="text-sm sm:text-sm md:text-base py-2 cursor-pointer"
-                  >
-                    {{ $t("app.form.signEvent") }}
-                  </button>
-                  <button
-                    @click="scrollToForm('booth')"
-                    class="text-sm sm:text-sm md:text-base py-2 cursor-pointer"
-                  >
-                    {{ $t("app.form.signBooth") }}
-                  </button>
-                </div>
-                <div class="hidden lg:block">
-                  <LanguageSwitch />
-                </div>
-              </div>
-            </div>
+        class="animate-fade-down duration-1000 ease-in-out sticky z-50 top-0 left-0 right-0 shadow w-full group"
+        :class="{'bg-black': !showHeader, 'bg-white': showHeader}"
+    >
+      <div
+        class="lg:container mx-auto navbar flex flex-col lg:flex-row w-full items-center lg:justify-between"
+      >
+        <div
+          class="lg:navbar-start h-16 min-h-16 py-0 w-full flex justify-between container"
+        >
+          <a href="/">
+            <img
+              class="w-fit h-auto object-contain max-w-full max-h-full"
+              :src="showHeader ? '/image/netzero/header/logo-light.png' : '/image/netzero/header/logo.png'"
+              alt="logo"
+            />
+          </a>
+          <div class="lg:hidden">
+            <LanguageSwitch />
           </div>
-          <!-- header white (visible on hover or scroll) -->
-          <div 
-            class="px-0 bg-white "
-            :class="{
-              'block': showHeader,
-              'hidden group-hover:block': !showHeader
-            }"
+        </div>
+        <div
+          class="lg:navbar-end flex w-full items-center justify-center gap-4 border-t  lg:border-none h-10 z-10 lg:justify-end"
+          :class="{'border-white': !showHeader, 'border-black': showHeader}"
+        >
+          <div
+            :class="{'text-white': !showHeader, 'text-black': showHeader}"
+            class="flex items-center justify-center gap-4 text-nowrap"
           >
-            <div
-              class="lg:container mx-auto navbar flex flex-col lg:flex-row w-full items-center lg:justify-between"
+            <button
+              @click="scrollToForm('participate')"
+              class="text-sm sm:text-sm md:text-base py-2 cursor-pointer nav-item"
             >
-              <div
-                class="lg:navbar-start h-16 min-h-16 py-0 w-full flex justify-between container"
-              >
-                <a href="/">
-                  <img
-                    class="w-fit h-auto object-contain max-w-full max-h-full"
-                    src="public/image/netzero/header/logo-light.png"
-                    alt="logo"
-                  />
-                </a>
-                <div class="lg:hidden">
-                  <LanguageSwitch />
-                </div>
-              </div>
-              <div
-                class="lg:navbar-end flex w-full items-center justify-center gap-4 border-t border-white lg:border-none h-10 z-10 lg:justify-end"
-              >
-                <div
-                  class="flex items-center justify-center gap-4 text-nowrap text-black"
-                >
-                  <button
-                    @click="scrollToForm('participate')"
-                    class="text-sm sm:text-sm md:text-base py-2 cursor-pointer nav-item"
-                  >
-                    {{ $t("app.form.signEvent") }}
-                  </button>
-                  <button
-                    @click="scrollToForm('booth')"
-                    class="text-sm sm:text-sm md:text-base py-2 cursor-pointer nav-item"
-                  >
-                    {{ $t("app.form.signBooth") }}
-                  </button>
-                </div>
-                <div class="hidden lg:block">
-                  <LanguageSwitch />
-                </div>
-              </div>
-            </div>
+              {{ $t("app.form.signEvent") }}
+            </button>
+            <button
+              @click="scrollToForm('booth')"
+              class="text-sm sm:text-sm md:text-base py-2 cursor-pointer nav-item"
+            >
+              {{ $t("app.form.signBooth") }}
+            </button>
           </div>
-      </header>
+          <div class="hidden lg:block">
+            <LanguageSwitch />
+          </div>
+        </div>
+      </div>
+    </header>
     <!-- main -->
     <div class="relative w-full z-20 overflow-hidden flex flex-col">
       <img
