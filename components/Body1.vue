@@ -2,9 +2,9 @@
   <div>
     <!-- header -->
     <header
-        class="animate-fade-down duration-1000 ease-in-out sticky z-50 top-0 left-0 right-0 shadow w-full group"
-        :class="{'bg-black': !showHeader, 'bg-white': showHeader}"
-    >
+        class="animate-fade-down duration-1000 ease-in-out sticky z-50 top-0 left-0 right-0 shadow-xl w-full group"
+        :class="headerClass"
+      >
       <div
         class="lg:container mx-auto navbar flex flex-col lg:flex-row w-full items-center lg:justify-between"
       >
@@ -14,7 +14,7 @@
           <a href="/">
             <img
               class="w-fit h-auto object-contain max-w-full max-h-full"
-              :src="showHeader ? '/image/netzero/header/logo-light.png' : '/image/netzero/header/logo.png'"
+              :src="!isAtTop ? '/image/netzero/header/logo-light.png' : '/image/netzero/header/logo.png'"
               alt="logo"
             />
           </a>
@@ -24,10 +24,9 @@
         </div>
         <div
           class="lg:navbar-end flex w-full items-center justify-center gap-4 border-t  lg:border-none h-10 z-10 lg:justify-end"
-          :class="{'border-white': !showHeader, 'border-black': showHeader}"
         >
           <div
-            :class="{'text-white': !showHeader, 'text-black': showHeader}"
+            :class="{'text-white': isAtTop, 'text-black': !isAtTop}"
             class="flex items-center justify-center gap-4 text-nowrap"
           >
             <button
@@ -333,7 +332,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, watch, nextTick, onBeforeMount } from 'vue';
+import { ref, } from 'vue';
 
 const { locale } = useI18n();
 const showForm = ref("participate");
@@ -344,27 +343,16 @@ const setCurrentForm = (form) => {
 const showHeader = ref(false);
 const scrollY = ref(0);
 
-// Sửa lại hàm resetScroll
-const resetScroll = async () => {
-  await nextTick();
-  window.scrollTo(0, 0);
-  showHeader.value = false;
-  scrollY.value = 0;
-};
+const isAtTop = ref(true);
 
-// Thêm onBeforeMount
-onBeforeMount(() => {
-  resetScroll();
-});
+const handleScroll = () => {
+  const currentScrollTop = window.scrollY;
+  isAtTop.value = currentScrollTop === 0;
+}
 
-const updateScroll = () => {
-  scrollY.value = window.scrollY;
-  if (scrollY.value > 50) {
-    showHeader.value = true;
-  } else {
-    showHeader.value = false;
-  }
-};
+const headerClass = computed(() => {
+  return [isAtTop.value ? 'bg-black' : 'bg-white'].join(' ')
+})
 
 const areaForm = ref(null);
 const scrollToForm = (form) => {
@@ -435,11 +423,13 @@ const media = [
 ];
 
 onMounted(() => {
-  resetScroll();
+  window.addEventListener("scroll", handleScroll);
   window.addEventListener("scroll", updateScroll);
+
 });
 
 onUnmounted(() => {
+  window.removeEventListener("scroll", handleScroll);
   window.removeEventListener("scroll", updateScroll);
 });
 
