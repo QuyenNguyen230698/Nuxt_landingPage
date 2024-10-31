@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted } from "vue";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -44,5 +44,4 @@ watch(scrollY, (newVal) => {
     showHeader.value = true;
   }
 });
-
 </script>
