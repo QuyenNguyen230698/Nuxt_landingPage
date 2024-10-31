@@ -7,7 +7,7 @@
           class="px-0 duration-1000"
           :class="{'bg-black': !showHeader, 'bg-white': showHeader}"
           @mouseover="showHeader = true"
-          @mouseleave="showHeader = scrollY > 50"
+          @mouseleave="handleMouseLeave"
           >
           <div class="lg:container mx-auto navbar flex flex-col lg:flex-row w-full items-center lg:justify-between">
             <div class="lg:navbar-start h-16 min-h-16 py-0 w-full flex justify-between container">
@@ -412,8 +412,11 @@ const media = [
   { src: "/image/netzero/communication/18.png" },
 ];
 
+const handleMouseLeave = () => {
+  showHeader.value = window.scrollY > 50;
+};
+
 onMounted(() => {
-  scrollY.value = window.scrollY;
   window.addEventListener("scroll", updateScroll);
 });
 
