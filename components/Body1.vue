@@ -2,18 +2,17 @@
   <div>
     <!-- header -->
     <header
-        class=" sticky z-50 top-0 left-0 right-0 shadow w-full">
+        class="bg-black transition-colors duration-1000 ease-in-out sticky z-50 top-0 left-0 right-0 shadow w-full">
         <div
-          class="px-0 duration-1000"
+          class="px-0 animate-fade-down duration-1000 ease-in-out"
           :class="{'bg-black': !showHeader, 'bg-white': showHeader}"
           @mouseover="showHeader = true"
-          @mouseleave="handleMouseLeave"
-          >
+          @mouseleave="showHeader = scrollY > 50">
           <div class="lg:container mx-auto navbar flex flex-col lg:flex-row w-full items-center lg:justify-between">
             <div class="lg:navbar-start h-16 min-h-16 py-0 w-full flex justify-between container">
               <a href="/">
                 <img
-                  class="w-fit h-auto object-contain max-w-full max-h-full animate-fade-down duration-1000 ease-in-out"
+                  class="w-fit h-auto object-contain max-w-full max-h-full"
                   :src="showHeader ? '/image/netzero/header/logo-light.png' : '/image/netzero/header/logo.png'"
                   alt="logo"/>
               </a>
@@ -22,7 +21,7 @@
               </div>
             </div>
             <div class="lg:navbar-end flex w-full items-center justify-center gap-4 border-t border-white lg:border-none h-10 z-10 lg:justify-end">
-              <div :class="{'text-white': !showHeader, 'text-black': showHeader}" class="flex items-center justify-center gap-4 text-nowrap animate-fade-down duration-1000 ease-in-out">
+              <div :class="{'text-white': !showHeader, 'text-black': showHeader}" class="flex items-center justify-center gap-4 text-nowrap">
                 <button
                   @click="scrollToForm('participate')"
                   class="text-sm sm:text-sm md:text-base py-2 cursor-pointer nav-item">
@@ -411,10 +410,6 @@ const media = [
   { src: "/image/netzero/communication/17.png" },
   { src: "/image/netzero/communication/18.png" },
 ];
-
-const handleMouseLeave = () => {
-  showHeader.value = window.scrollY > 50;
-};
 
 onMounted(() => {
   window.addEventListener("scroll", updateScroll);
