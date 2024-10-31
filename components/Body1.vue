@@ -333,7 +333,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { ref, } from 'vue';
 
 const { locale } = useI18n();
 const showForm = ref("participate");
@@ -344,24 +344,21 @@ const setCurrentForm = (form) => {
 const showHeader = ref(false);
 const scrollY = ref(0);
 
-const updateScroll = () => {
-  scrollY.value = window.scrollY;
-  showHeader.value = scrollY.value > 50;
+// Thêm hàm này để reset trạng thái khi tải trang
+const resetScroll = () => {
+  window.scrollTo(0, 0);
+  showHeader.value = false;
+  scrollY.value = 0;
 };
 
-onMounted(() => {
-  window.addEventListener("scroll", updateScroll);
-  // Ensure the scroll position is checked after the component is mounted
-  updateScroll();
-});
-
-onUnmounted(() => {
-  window.removeEventListener("scroll", updateScroll);
-});
-
-watch(scrollY, (newVal) => {
-  showHeader.value = newVal > 50;
-});
+const updateScroll = () => {
+  scrollY.value = window.scrollY;
+  if (scrollY.value > 50) {
+    showHeader.value = true;
+  } else {
+    showHeader.value = false;
+  }
+};
 
 const areaForm = ref(null);
 const scrollToForm = (form) => {
@@ -430,6 +427,21 @@ const media = [
   { src: "/image/netzero/communication/17.png" },
   { src: "/image/netzero/communication/18.png" },
 ];
+
+onMounted(() => {
+  resetScroll(); // Reset khi component được mount
+  window.addEventListener("scroll", updateScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", updateScroll);
+});
+
+watch(scrollY, (newVal) => {
+  if (newVal > 50) {
+    showHeader.value = true;
+  }
+});
 </script>
 <style scoped>
 .bg-main {
