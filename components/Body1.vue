@@ -4,7 +4,7 @@
     <header
         class=" sticky z-50 top-0 left-0 right-0 shadow w-full">
         <div
-          class="px-0 transition-colors duration-1000 ease-in-out"
+          class="px-0 transition-colors duration-1000"
           :class="{'bg-black': !showHeader, 'bg-white': showHeader}"
           @mouseover="showHeader = true"
           @mouseleave="showHeader = scrollY > 50">
