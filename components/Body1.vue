@@ -2,12 +2,13 @@
   <div>
     <!-- header -->
     <header
+        @mouseenter="handleHeaderHover(true)"
+        @mouseleave="handleHeaderHover(false)"
         class="bg-black transition-colors duration-1000 ease-in-out sticky z-50 top-0 left-0 right-0 shadow w-full">
         <div
           class="px-0 animate-fade-down duration-1000 ease-in-out"
           :class="{'bg-black': !showHeader, 'bg-white': showHeader}"
-          @mouseover="showHeader = true"
-          @mouseleave="showHeader = scrollY > 50">
+          >
           <div class="lg:container mx-auto navbar flex flex-col lg:flex-row w-full items-center lg:justify-between">
             <div class="lg:navbar-start h-16 min-h-16 py-0 w-full flex justify-between container">
               <a href="/">
@@ -340,6 +341,12 @@ const updateScroll = () => {
     showHeader.value = true;
   } else {
     showHeader.value = false;
+  }
+};
+
+const handleHeaderHover = (isHovering) => {
+  if (scrollY.value <= 50) {
+    showHeader.value = isHovering;
   }
 };
 
