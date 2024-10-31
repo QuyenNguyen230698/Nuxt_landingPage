@@ -4,10 +4,11 @@
     <header
         class=" sticky z-50 top-0 left-0 right-0 shadow w-full">
         <div
+          class="px-0 duration-1000"
           :class="{'bg-black': !showHeader, 'bg-white': showHeader}"
           @mouseover="showHeader = true"
           @mouseleave="showHeader = scrollY > 50"
-          class="px-0 duration-1000">
+          >
           <div class="lg:container mx-auto navbar flex flex-col lg:flex-row w-full items-center lg:justify-between">
             <div class="lg:navbar-start h-16 min-h-16 py-0 w-full flex justify-between container">
               <a href="/">
@@ -412,6 +413,7 @@ const media = [
 ];
 
 onMounted(() => {
+  scrollY.value = window.scrollY;
   window.addEventListener("scroll", updateScroll);
 });
 
