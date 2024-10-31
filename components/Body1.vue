@@ -333,7 +333,7 @@
 </template>
 
 <script setup>
-import { ref, } from 'vue';
+import { ref, onMounted, onUnmounted, watch } from 'vue';
 
 const { locale } = useI18n();
 const showForm = ref("participate");
@@ -343,14 +343,25 @@ const setCurrentForm = (form) => {
 
 const showHeader = ref(false);
 const scrollY = ref(0);
+
 const updateScroll = () => {
   scrollY.value = window.scrollY;
-  if (scrollY.value > 50) {
-    showHeader.value = true;
-  } else {
-    showHeader.value = false;
-  }
+  showHeader.value = scrollY.value > 50;
 };
+
+onMounted(() => {
+  window.addEventListener("scroll", updateScroll);
+  // Ensure the scroll position is checked after the component is mounted
+  updateScroll();
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", updateScroll);
+});
+
+watch(scrollY, (newVal) => {
+  showHeader.value = newVal > 50;
+});
 
 const areaForm = ref(null);
 const scrollToForm = (form) => {
@@ -419,20 +430,6 @@ const media = [
   { src: "/image/netzero/communication/17.png" },
   { src: "/image/netzero/communication/18.png" },
 ];
-
-onMounted(() => {
-  window.addEventListener("scroll", updateScroll);
-});
-
-onUnmounted(() => {
-  window.removeEventListener("scroll", updateScroll);
-});
-
-watch(scrollY, (newVal) => {
-  if (newVal > 50) {
-    showHeader.value = true;
-  }
-});
 </script>
 <style scoped>
 .bg-main {
