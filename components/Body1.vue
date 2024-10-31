@@ -333,7 +333,7 @@
 </template>
 
 <script setup>
-import { ref, } from 'vue';
+import { ref, onMounted, onUnmounted, watch, nextTick, onBeforeMount } from 'vue';
 
 const { locale } = useI18n();
 const showForm = ref("participate");
@@ -344,12 +344,18 @@ const setCurrentForm = (form) => {
 const showHeader = ref(false);
 const scrollY = ref(0);
 
-// Thêm hàm này để reset trạng thái khi tải trang
-const resetScroll = () => {
+// Sửa lại hàm resetScroll
+const resetScroll = async () => {
+  await nextTick();
   window.scrollTo(0, 0);
   showHeader.value = false;
   scrollY.value = 0;
 };
+
+// Thêm onBeforeMount
+onBeforeMount(() => {
+  resetScroll();
+});
 
 const updateScroll = () => {
   scrollY.value = window.scrollY;
@@ -429,7 +435,7 @@ const media = [
 ];
 
 onMounted(() => {
-  resetScroll(); // Reset khi component được mount
+  resetScroll();
   window.addEventListener("scroll", updateScroll);
 });
 
