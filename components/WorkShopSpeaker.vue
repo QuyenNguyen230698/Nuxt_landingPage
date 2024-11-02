@@ -11,7 +11,7 @@
                 <div class="w-fit bg-transparent title-body">{{ $t('app.event.hot2') }}</div>
               </div>
             </div>
-            <div class="w-full lg:w-2/3 grid grid-cols-2 lg:grid-cols-4 gap-1 py-3">
+            <div class="w-full lg:w-2/3 grid grid-cols-2 lg:grid-cols-6 gap-1 py-3">
               <img 
                 v-for="(item, index) in workshop" 
                 :src="item.image" 

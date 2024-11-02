@@ -69,7 +69,7 @@ export default defineNuxtConfig({
     plugins: {
       tailwindcss: {}, // Sử dụng Tailwind CSS
       autoprefixer: {}, // Tự động thêm các tiền tố CSS
-      "@fullhuman/postcss-purgecss": {
+      "@fullhuman/postcss-purgecss": { // nén file css
         content: [
           "./components/**/*.{vue,js}",
           "./layouts/**/*.vue",
@@ -81,7 +81,7 @@ export default defineNuxtConfig({
           "./index.html",
           "./src/**/*.{vue,js,ts,jsx,tsx}",
         ],
-        safelist: [
+        safelist: [ // tránh cài mã độc css
           "aos-init",
           "aos-animate",
           /^aos-/,

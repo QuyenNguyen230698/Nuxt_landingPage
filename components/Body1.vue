@@ -366,31 +366,37 @@ const scrollToForm = (form) => {
 };
 
 const section = computed(() => [
-  { image: `/image/netzero/section/${locale.value}/1.webp` },
-  { image: `/image/netzero/section/${locale.value}/2fix.webp` },
-  { image: `/image/netzero/section/${locale.value}/3.webp` },
-  { image: `/image/netzero/section/${locale.value}/4.webp` },
+  { image: `/image/netzero/section/${locale.value}/SUMMIT_SS1_1.webp` },
+  { image: `/image/netzero/section/${locale.value}/SUMMIT_SS1_2.webp` },
+  { image: `/image/netzero/section/${locale.value}/SUMMIT_SS1_3.webp` },
+  { image: `/image/netzero/section/${locale.value}/SUMMIT_SS1_4.webp` },
 ]);
 const background = [{ image: "/image/netzero/background/bg-title.png" }];
 const workshop = computed(() => [
-  { image: `/image/netzero/workshop/${locale.value}/workshop-1.webp` },
-  { image: `/image/netzero/workshop/${locale.value}/workshop-2.webp` },
-  { image: `/image/netzero/workshop/${locale.value}/workshop-3.webp` },
-  { image: `/image/netzero/workshop/${locale.value}/workshop-4.webp` },
+  { image: `/image/netzero/workshop/${locale.value}/SUMMIT_WORKSHOP_1.webp` },
+  { image: `/image/netzero/workshop/${locale.value}/SUMMIT_WORKSHOP_2.webp` },
+  { image: `/image/netzero/workshop/${locale.value}/SUMMIT_WORKSHOP_3.webp` },
+  { image: `/image/netzero/workshop/${locale.value}/SUMMIT_WORKSHOP_4.webp` },
+  { image: `/image/netzero/workshop/${locale.value}/SUMMIT_WORKSHOP_5.webp` },
+  { image: `/image/netzero/workshop/${locale.value}/SUMMIT_WORKSHOP_6.webp` },
 ]);
 const speaker = computed(() => [
-  { src: `/image/netzero/speaker/${locale.value}/speaker-1.webp` },
-  { src: `/image/netzero/speaker/${locale.value}/speaker-1.webp` },
-  { src: `/image/netzero/speaker/${locale.value}/speaker-1.webp` },
-  { src: `/image/netzero/speaker/${locale.value}/speaker-1.webp` },
-  { src: `/image/netzero/speaker/${locale.value}/speaker-1.webp` },
-  { src: `/image/netzero/speaker/${locale.value}/speaker-1.webp` },
+  { src: `/image/netzero/speaker/${locale.value}/SUMMIT_DIENGIA_1.webp` },
+  { src: `/image/netzero/speaker/${locale.value}/SUMMIT_DIENGIA_2.webp` },
+  { src: `/image/netzero/speaker/${locale.value}/SUMMIT_DIENGIA_3.webp` },
+  { src: `/image/netzero/speaker/${locale.value}/SUMMIT_DIENGIA_4.webp` },
+  { src: `/image/netzero/speaker/${locale.value}/SUMMIT_DIENGIA_5.webp` },
+  { src: `/image/netzero/speaker/${locale.value}/SUMMIT_DIENGIA_6.webp` },
 ]);
 const timeLine = computed(() => [
-  { image: `/image/netzero/timeline/${locale.value}/timeline-one.webp` },
-  { image: `/image/netzero/timeline/${locale.value}/timeline-3.webp` },
-  { image: `/image/netzero/timeline/${locale.value}/timeline-2.webp` },
-  { image: `/image/netzero/timeline/${locale.value}/timeline-4.webp` },
+  { image: `/image/netzero/timeline/${locale.value}/SUMMIT_TIMELINE_1.webp` },
+  { image: `/image/netzero/timeline/${locale.value}/SUMMIT_TIMELINE_2.webp` },
+  { image: `/image/netzero/timeline/${locale.value}/SUMMIT_TIMELINE_3.webp` },
+  { image: `/image/netzero/timeline/${locale.value}/SUMMIT_TIMELINE_4.webp` },
+  { image: `/image/netzero/timeline/${locale.value}/SUMMIT_TIMELINE_5.webp` },
+  { image: `/image/netzero/timeline/${locale.value}/SUMMIT_TIMELINE_6.webp` },
+  { image: `/image/netzero/timeline/${locale.value}/SUMMIT_TIMELINE_7.webp` },
+  { image: `/image/netzero/timeline/${locale.value}/SUMMIT_TIMELINE_8.webp` },
 ]);
 const sponsorship = [
   { image: "/image/netzero/logo/elle.png" },
@@ -398,8 +404,8 @@ const sponsorship = [
   { image: "/image/netzero/logo/cafef.png" },
 ];
 const bus = computed(() => [
-  { image: `/image/netzero/bus/${locale.value}/bus-1.webp` },
-  { image: `/image/netzero/bus/${locale.value}/bus-2.webp` },
+  { image: `/image/netzero/bus/${locale.value}/SUMMIT_BUS_1.webp` },
+  { image: `/image/netzero/bus/${locale.value}/SUMMIT_BUS_2.webp` },
 ]);
 const media = [
   { src: "/image/netzero/communication/1.png" },
