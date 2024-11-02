@@ -7,7 +7,7 @@
         </div>
         <h2 data-aos="fade-down" data-aos-duration='500' data-aos-offset=“100” class="container mx-auto title-body">{{ $t('app.time.timeline') }}</h2>
       </div>
-      <div class="w-full h-full container mx-auto grid grid-cols-2 gap-1 px-4 md:px-16 lg:px-28">
+      <div class="w-full h-full container mx-auto grid grid-cols-1 gap-1 px-4 md:px-16 lg:px-28">
         <img 
           v-for="(item, index) in timeLine" 
           :src="item.image" 
@@ -15,7 +15,13 @@
           :data-aos="index % 2 === 0 ? 'fade-right' : 'fade-left'"
           :data-aos-duration="index < 2 ? 1000 : 1200"
           data-aos-offset="100"
-          class="w-full h-auto"
+          :class="[
+            'w-full h-auto',
+            // Thêm order cho mobile
+            {'md:order-none': true},
+            {'-order-1': index % 2 === 0},
+            {'order-1': index % 2 !== 0}
+          ]"
         >
       </div>
     </div>
