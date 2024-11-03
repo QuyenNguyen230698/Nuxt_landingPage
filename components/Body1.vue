@@ -2,8 +2,10 @@
   <div>
     <!-- header -->
     <header
-        class="animate-fade-down duration-1000 ease-in-out sticky z-50 top-0 left-0 right-0 shadow-xl w-full group"
+        class="animate-fade-down duration-1000 ease-in-out sticky z-50 top-0 left-0 right-0 shadow-xl w-full group hover:bg-white hover:text-black"
         :class="headerClass"
+              @mouseover="isHovered = true"
+              @mouseleave="isHovered = false"
       >
       <div
         class="lg:container mx-auto navbar flex flex-col lg:flex-row w-full items-center lg:justify-between"
@@ -14,7 +16,7 @@
           <a href="/">
             <img
               class="w-fit h-auto object-contain max-w-full max-h-full"
-              :src="!isAtTop ? '/image/netzero/header/logo-light.png' : '/image/netzero/header/logo.png'"
+              :src="isHovered ? '/image/netzero/header/logo-light.png' : (!isAtTop ? '/image/netzero/header/logo-light.png' : '/image/netzero/header/logo.png')"
               alt="logo"
             />
           </a>
@@ -26,7 +28,7 @@
           class="lg:navbar-end flex w-full items-center justify-center gap-4 border-t  lg:border-none h-10 z-10 lg:justify-end"
         >
           <div
-            :class="{'text-white': isAtTop, 'text-black': !isAtTop}"
+            :class="{'text-white': isAtTop && !isHovered, 'text-black': !isAtTop || isHovered}"
             class="flex items-center justify-center gap-4 text-nowrap"
           >
             <button
@@ -340,6 +342,8 @@ const setCurrentForm = (form) => {
   showForm.value = form;
 };
 
+const isHovered = ref(false);
+
 const showHeader = ref(false);
 const scrollY = ref(0);
 
@@ -430,13 +434,11 @@ const media = [
 
 onMounted(() => {
   window.addEventListener("scroll", handleScroll);
-  window.addEventListener("scroll", updateScroll);
 
 });
 
 onUnmounted(() => {
   window.removeEventListener("scroll", handleScroll);
-  window.removeEventListener("scroll", updateScroll);
 });
 
 watch(scrollY, (newVal) => {
